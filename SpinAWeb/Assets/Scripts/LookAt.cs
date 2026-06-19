@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class LookAt : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    private Camera camera;
 
     void Start()
     {
-        camera = Camera.main;
+        camera = GetComponent<PlayerController>().camera;
     }
 
     void Update()
@@ -20,9 +20,13 @@ public class LookAt : MonoBehaviour
         );
         float angleRad = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x);
         float angleDeg = (180 / Mathf.PI) * angleRad - 90;
+        
+        // Debug.Log(angleDeg);
 
         transform.rotation = Quaternion.Euler(0f, 0f, angleDeg);
-        Debug.DrawLine(transform.position, mousePos, Color.red);
+        
+        // Debug.DrawLine(transform.position, mousePos, Color.red);
+        // Debug.DrawRay(transform.position, transform.up * 2f, Color.green);
 
         // Debug.Log(Input.mousePosition);
     }
