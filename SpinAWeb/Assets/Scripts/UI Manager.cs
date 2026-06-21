@@ -34,17 +34,20 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        SoundManager.PlaySound(SoundType.UIPositive);
         SceneManager.LoadScene("Game");
     }
 
     public void QuitToTitle()
     {
+        SoundManager.PlaySound(SoundType.UINegative);
         SceneManager.LoadScene("Main Screen");
     }
 
     public void QuitToDesktop()
     {
         Debug.Log("Successfully Quitted to Desktop!");
+        SoundManager.PlaySound(SoundType.UINegative);
         Application.Quit();
     }
 
@@ -52,7 +55,12 @@ public class UIManager : MonoBehaviour
     {
         if (pausePanel != null)
         {
-            pausePanel.SetActive(!pausePanel.activeSelf);
+            if (pausePanel.activeInHierarchy == false)
+            {
+                SoundManager.PlaySound(SoundType.UIPositive);
+                pausePanel.SetActive(true); //minor adjustments for audio
+            }
+            else ClosePanel();
         }
     }
 
@@ -60,6 +68,7 @@ public class UIManager : MonoBehaviour
     {
         if (pausePanel != null)
         {
+            SoundManager.PlaySound(SoundType.UINegative);
             pausePanel.SetActive(false);
         }
     }
