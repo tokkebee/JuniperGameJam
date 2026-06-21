@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// This script handles any and all things that need to be displayed
+// on the GUI, often referencing the Game Manager.
+
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }

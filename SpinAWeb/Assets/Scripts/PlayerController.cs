@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// This script handles all player movement
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public Camera camera;
