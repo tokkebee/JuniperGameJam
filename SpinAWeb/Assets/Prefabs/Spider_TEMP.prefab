@@ -488,6 +488,7 @@ Transform:
   m_Children:
   - {fileID: 10516504958730154}
   - {fileID: 2988909867792934915}
+  - {fileID: 1064430520245352254}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &65280017502633723
@@ -502,6 +503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3b5ab1a559b8f4989308ac39384ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  camera: {fileID: 0}
+  screenBounds: {x: 0, y: 0}
+  speed: 10
+  webspinner: {fileID: 335204823232597365}
 --- !u!114 &2867172029794543445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,7 +519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0048620a6d32d694b8e40b1618b19d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAt
-  camera: {fileID: 0}
 --- !u!1 &3495275538444770106
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +701,51 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &4509135729115481366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064430520245352254}
+  - component: {fileID: 335204823232597365}
+  m_Layer: 0
+  m_Name: spinnerets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1064430520245352254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509135729115481366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 782657615792990628}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &335204823232597365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509135729115481366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4532948e6aa54104d99d5c8a1214823e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WebSpinner
+  silkPrefab: {fileID: 1967815498440904769, guid: a9cc8d9ea50a2c24a8567140a744cd4c, type: 3}
 --- !u!1 &4802258983241043031
 GameObject:
   m_ObjectHideFlags: 0
