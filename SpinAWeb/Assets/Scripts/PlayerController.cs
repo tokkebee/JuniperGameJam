@@ -12,10 +12,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
 
     [Header("Dependants")]
-    [SerializeField] private WebSpinner webSpinner;
+    [SerializeField] private WebManager webManager;
 
     void Start()
     {
+        //warnings
+        if (webManager == null) {
+            Debug.Log("Web Manager missing from Player Controller");
+        }
+
         camera = Camera.main;
         //screenBounds = camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         screenBounds.y = camera.orthographicSize;
@@ -25,13 +30,17 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update() {
-        // if (Input.GetKeyDown(KeyCode.Space)) {
-        //     webSpinner.CreateSilk(this.transform.position, camera.ScreenToWorldPoint(Input.mousePosition));
-        // }
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            webManager.StartSilk();
+        }
+        if (Input.GetKey(KeyCode.Space) && webManager.silkActive) {
             Move();
             SpinWeb();
         }
+        if (Input.GetKeyUp(KeyCode.Space) && webManager.silkActive) {
+            webManager.EndSilk();
+        }
+        Debug.Log(webManager.silkActive);
     }
 
     void Move()
@@ -69,6 +78,6 @@ public class PlayerController : MonoBehaviour
 
     //Deposits web
     void SpinWeb() {
-        Debug.Log("Depositing web");
+        webManager.UpdateSilk();
     }
 }
