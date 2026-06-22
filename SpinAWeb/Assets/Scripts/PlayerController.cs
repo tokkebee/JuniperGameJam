@@ -1,11 +1,18 @@
 using UnityEngine;
 
+// This script handles all player movement
+
 public class PlayerController : MonoBehaviour
 {
+    [Header("Camera")]
     [SerializeField] public Camera camera;
+    [SerializeField] private Vector2 screenBounds;
+
+    [Header("Movement")]
     [SerializeField] private float speed;
 
-    [SerializeField] private Vector2 screenBounds;
+    [Header("Dependants")]
+    [SerializeField] private WebSpinner webSpinner;
 
     void Start()
     {
@@ -18,6 +25,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update() {
+        // if (Input.GetKeyDown(KeyCode.Space)) {
+        //     webSpinner.CreateSilk(this.transform.position, camera.ScreenToWorldPoint(Input.mousePosition));
+        // }
         if (Input.GetKey(KeyCode.Space)) {
             Move();
             SpinWeb();
