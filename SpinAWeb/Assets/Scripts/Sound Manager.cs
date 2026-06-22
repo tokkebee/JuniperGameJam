@@ -8,6 +8,8 @@ using UnityEngine.Audio;
 //To play sounds from SoundType lists
 //SoundManager.PlaySound(SoundType.{SOUNDTYPE}, {OPTIONAL FLOAT FOR VOLUME});
 //example: SoundManager.PlaySound(SoundType.UINegative);
+
+
 public enum SoundType //To add more sounds, make more enums below and give type and audio clip in inspector respectfully.
 { 
     SpiderCrawl,
@@ -23,10 +25,14 @@ public enum SoundType //To add more sounds, make more enums below and give type 
 
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
+
 {
+    [Header("To add more sounds, make more enums\n in script and give type and audio\n clip in inspector respectfully.")]
     [SerializeField] private SoundList[] soundList;
     public static SoundManager instance;
     private AudioSource audioSource;
+
+
 
     private void Awake()
     {
