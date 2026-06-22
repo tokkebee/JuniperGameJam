@@ -506,7 +506,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   screenBounds: {x: 0, y: 0}
   speed: 10
-  webspinner: {fileID: 335204823232597365}
+  webManager: {fileID: 0}
 --- !u!114 &2867172029794543445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,7 +710,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1064430520245352254}
-  - component: {fileID: 335204823232597365}
   m_Layer: 0
   m_Name: spinnerets
   m_TagString: Untagged
@@ -733,19 +732,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 782657615792990628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &335204823232597365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4509135729115481366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4532948e6aa54104d99d5c8a1214823e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WebSpinner
-  silkPrefab: {fileID: 1967815498440904769, guid: a9cc8d9ea50a2c24a8567140a744cd4c, type: 3}
 --- !u!1 &4802258983241043031
 GameObject:
   m_ObjectHideFlags: 0
