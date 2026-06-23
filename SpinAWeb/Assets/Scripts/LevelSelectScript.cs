@@ -20,7 +20,8 @@ public class LevelSelectScript : MonoBehaviour
         if (levelNumber <= GameManager.instance.highestLevelUnlocked)
         {
             SoundManager.PlaySound(SoundType.UIPositive);
-            SceneManager.LoadScene(levelNumber + numScenesBeforeLevelSelect);
+            StartCoroutine(UIManager.instance.LoadLevel($"Level {levelNumber}"));
+            //SceneManager.LoadScene(levelNumber + numScenesBeforeLevelSelect);
         }
         else
         {

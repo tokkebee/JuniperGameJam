@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +10,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
 
+    [Header("PauseUI")]
     [SerializeField] private GameObject pausePanel;
+
+    [Header("TransitionUI")]
+    public Animator transiton;
 
     private void Awake()
     {
@@ -38,13 +44,15 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         SoundManager.PlaySound(SoundType.UIPositive);
-        SceneManager.LoadScene("Game");
+        StartCoroutine(LoadLevel("Level Select"));
+        //SceneManager.LoadScene("Game");
     }
 
     public void QuitToTitle()
     {
         SoundManager.PlaySound(SoundType.UINegative);
-        SceneManager.LoadScene("Main Screen");
+        StartCoroutine(LoadLevel("Main Screen"));
+        //SceneManager.LoadScene("Main Screen");
     }
 
     public void QuitToDesktop()
@@ -75,4 +83,15 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(false);
         }
     }
+
+    public IEnumerator LoadLevel(string levelName) //Transition
+    {
+        transiton.SetTrigger("Start");
+        yield return new WaitForSeconds(.333f); //How long it takes for start transition to cover screen
+        SceneManager.LoadScene(levelName);
+        transiton.SetTrigger("Exit");
+        yield return new WaitForSeconds(.333f);
+        transiton.Play("IdleState", 0, 0f);
+    }
+    
 }
