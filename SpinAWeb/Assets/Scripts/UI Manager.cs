@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI;
 
 // This script handles any and all things that need to be displayed
 // on the GUI, often referencing the Game Manager.
@@ -15,6 +18,7 @@ public class UIManager : MonoBehaviour
 
     [Header("TransitionUI")]
     public Animator transiton;
+    private bool isTransitioning = false; //AMEN!!!!
 
     private void Awake()
     {
@@ -86,12 +90,20 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator LoadLevel(string levelName) //Transition
     {
+        if (isTransitioning)
+        {
+            yield break;
+        }
+
+        isTransitioning = true;
+
         transiton.SetTrigger("Start");
-        yield return new WaitForSeconds(.333f); //How long it takes for start transition to cover screen
+        yield return new WaitForSeconds(.333f); //How long it takes for transition to cover screen
         SceneManager.LoadScene(levelName);
         transiton.SetTrigger("Exit");
         yield return new WaitForSeconds(.333f);
         transiton.Play("IdleState", 0, 0f);
+        
+        isTransitioning = false;
     }
-    
 }
