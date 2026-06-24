@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -48,6 +49,7 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         SoundManager.PlaySound(SoundType.UIPositive);
+        pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
         StartCoroutine(LoadLevel("Level Select"));
         //SceneManager.LoadScene("Game");
     }
@@ -55,6 +57,7 @@ public class UIManager : MonoBehaviour
     public void QuitToTitle()
     {
         SoundManager.PlaySound(SoundType.UINegative);
+        pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
         StartCoroutine(LoadLevel("Main Screen"));
         //SceneManager.LoadScene("Main Screen");
     }
@@ -90,20 +93,17 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator LoadLevel(string levelName) //Transition
     {
-        if (isTransitioning)
-        {
-            yield break;
-        }
-
         isTransitioning = true;
 
         transiton.SetTrigger("Start");
         yield return new WaitForSeconds(.333f); //How long it takes for transition to cover screen
+
         SceneManager.LoadScene(levelName);
-        transiton.SetTrigger("Exit");
-        yield return new WaitForSeconds(.333f);
-        transiton.Play("IdleState", 0, 0f);
-        
         isTransitioning = false;
+        transiton.SetTrigger("Exit");
+
+        yield return new WaitForSeconds(.333f);
+        //transiton.Play("IdleState", 0, 0f);
+        
     }
 }

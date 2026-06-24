@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 54356209}
   - component: {fileID: 54356211}
   - component: {fileID: 54356210}
+  - component: {fileID: 54356212}
   m_Layer: 5
   m_Name: Game Title
   m_TagString: Untagged
@@ -256,6 +257,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54356208}
   m_CullTransparentMesh: 1
+--- !u!114 &54356212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54356208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15478f6e08ffdb41af89a753c0c8277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TitleScript
+  isLevelTitle: 0
+  Rotate: 1
+  rotatePower: 1
+  maxAngle: 3.5
 --- !u!1 &138036387
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +412,8 @@ GameObject:
   - component: {fileID: 239564911}
   - component: {fileID: 239564910}
   - component: {fileID: 239564909}
+  - component: {fileID: 239564912}
+  - component: {fileID: 239564913}
   m_Layer: 5
   m_Name: Quit to Desktop
   m_TagString: Untagged
@@ -516,6 +535,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239564907}
   m_CullTransparentMesh: 1
+--- !u!95 &239564912
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239564907}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adc0d09c35abacf4481a77fd99914f0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &239564913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239564907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c9ab0ace18a2144b225af31d9d337f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimationScript
 --- !u!1001 &300779488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1358,6 +1411,8 @@ GameObject:
   - component: {fileID: 2005342958}
   - component: {fileID: 2005342957}
   - component: {fileID: 2005342956}
+  - component: {fileID: 2005342959}
+  - component: {fileID: 2005342960}
   m_Layer: 5
   m_Name: Start Game
   m_TagString: Untagged
@@ -1375,7 +1430,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1617636226}
   m_Father: {fileID: 1103812148}
@@ -1479,6 +1534,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005342954}
   m_CullTransparentMesh: 1
+--- !u!95 &2005342959
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005342954}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adc0d09c35abacf4481a77fd99914f0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2005342960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005342954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c9ab0ace18a2144b225af31d9d337f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimationScript
 --- !u!1001 &882557440415165151
 PrefabInstance:
   m_ObjectHideFlags: 0

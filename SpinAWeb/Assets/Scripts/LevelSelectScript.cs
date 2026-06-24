@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelSelectScript : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] private GameObject LevelsGameObject;
     [SerializeField] private TMP_FontAsset levelFont;
 
+    [SerializeField] private Color unlockedLevelColor = Color.white;
+    [SerializeField] private Color lockedLevelColor = Color.grey;
+
     private void Start()
     {
-        renameButtons();
+        IdentifyButtons();
     }
 
     public void OpenScene(int levelNumber)
@@ -29,14 +33,24 @@ public class LevelSelectScript : MonoBehaviour
         }
     }
 
-    void renameButtons() //Automatically asigns text number & font to respective level #
+    void IdentifyButtons() //Automatically asigns text number & font to respective level # as well as turns color dark for locked levels
     {
         for (int i = 0; i < LevelsGameObject.transform.childCount; i++)
         {
             GameObject currentLevel = LevelsGameObject.transform.GetChild(i).gameObject;
+            Image image = currentLevel.GetComponent<Image>();
             TextMeshProUGUI buttonText = currentLevel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
             buttonText.text = (i+1).ToString();
             buttonText.font = levelFont;
+
+            if (i < GameManager.instance.highestLevelUnlocked)
+            {
+                image.color = unlockedLevelColor;
+            }
+            else
+            { 
+                image.color = lockedLevelColor;
+            }
         }
     }
 
