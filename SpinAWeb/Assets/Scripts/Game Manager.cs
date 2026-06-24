@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -8,7 +10,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    [Header("State Data")]
     [SerializeField] GameState currentGameState = GameState.mainMenu;
+    [HideInInspector]
+    public GameState previousState; //Used for handling pausing
 
     [Header("Save/Load Settings")]
     public int highestLevelUnlocked = 1; //Used for saving/tracking what levels are completed for PlayerDataScript
@@ -39,6 +44,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         switchState(GameState.mainMenu);
+        previousState = currentGameState;
     }
 
     public void levelComplete()
@@ -54,6 +60,7 @@ public class GameManager : MonoBehaviour
     #region GameState //How to use: GameManager.instance.switchState(GameManager.GameState.{State You Want});
     public void switchState(GameState newGameState)
     {
+        previousState = currentGameState;
         currentGameState = newGameState;
         switch (newGameState)
         {
@@ -67,6 +74,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(SoundManager.MusicTransition(SoundType.GameMusic));
                 break;
             case GameState.pause:
+                SoundManager.onPauseMusic();
                 break;
         }
     }
@@ -74,6 +82,12 @@ public class GameManager : MonoBehaviour
     public GameState getCurrentGameState()
     { 
         return currentGameState;
+    }
+
+    public void Unpause(GameState previousState)
+    {
+        SoundManager.onUnpauseMusic();
+        switchState(previousState);
     }
     #endregion
 

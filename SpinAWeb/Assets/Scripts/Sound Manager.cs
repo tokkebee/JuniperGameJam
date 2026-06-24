@@ -33,7 +33,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundList[] soundList;
     public static SoundManager instance;
     private AudioSource audioSource;
+
+    [Header("Music Settings")]
     [SerializeField] private AudioSource loopingAudioSource;
+    [SerializeField] private AudioMixerGroup musicGroup;
+    [SerializeField] private AudioMixerGroup musicReverbGroup;
     private float transitionTime = .333f; //.333f because thats how long it takes for transition to play
 
 
@@ -91,6 +95,16 @@ public class SoundManager : MonoBehaviour
         Debug.LogWarning($"Music: {music} not found.");
     }
     #endregion
+
+    public static void onPauseMusic()
+    {
+        instance.loopingAudioSource.outputAudioMixerGroup = instance.musicReverbGroup;
+    }
+
+    public static void onUnpauseMusic()
+    {
+        instance.loopingAudioSource.outputAudioMixerGroup = instance.musicGroup;
+    }
 
     [System.Serializable]
     public class SoundList

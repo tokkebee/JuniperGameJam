@@ -577,10 +577,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2178546476737447356, guid: f998830021b894c48a90ad86085760e5, type: 3}
+      propertyPath: musicGroup
+      value: 
+      objectReference: {fileID: -9153833727628381767, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
+    - target: {fileID: 2178546476737447356, guid: f998830021b894c48a90ad86085760e5, type: 3}
+      propertyPath: musicReverbGroup
+      value: 
+      objectReference: {fileID: 9171310218753817529, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
     - target: {fileID: 3538882491844095578, guid: f998830021b894c48a90ad86085760e5, type: 3}
       propertyPath: m_Name
       value: Sound Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3854319462998582890, guid: f998830021b894c48a90ad86085760e5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 2715792831351515553, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
+    - target: {fileID: 4574031523810254528, guid: f998830021b894c48a90ad86085760e5, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -9153833727628381767, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
     - target: {fileID: 5869522438863384151, guid: f998830021b894c48a90ad86085760e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 856.8213
@@ -782,9 +798,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1318663232896825841, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437986595084541211, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3426090976436595755, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_Name
       value: UI Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311323467950944800, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4323452508120728247, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -825,6 +853,10 @@ PrefabInstance:
     - target: {fileID: 4323452508120728247, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706636519792251926, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

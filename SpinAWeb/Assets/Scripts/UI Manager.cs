@@ -79,6 +79,7 @@ public class UIManager : MonoBehaviour
             {
                 SoundManager.PlaySound(SoundType.UIPositive);
                 pausePanel.SetActive(true); //minor adjustments for audio
+                GameManager.instance.switchState(GameManager.GameState.pause);
             }
             else ClosePanel();
         }
@@ -90,6 +91,7 @@ public class UIManager : MonoBehaviour
         {
             SoundManager.PlaySound(SoundType.UINegative);
             pausePanel.SetActive(false);
+            GameManager.instance.Unpause(GameManager.instance.previousState);
         }
     }
 
