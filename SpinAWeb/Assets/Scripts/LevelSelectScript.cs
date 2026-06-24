@@ -25,6 +25,8 @@ public class LevelSelectScript : MonoBehaviour
         {
             SoundManager.PlaySound(SoundType.UIPositive);
             StartCoroutine(UIManager.instance.LoadLevel($"Level {levelNumber}"));
+
+            GameManager.instance.switchState(GameManager.GameState.game); //Enter game Gamestate
             //SceneManager.LoadScene(levelNumber + numScenesBeforeLevelSelect);
         }
         else

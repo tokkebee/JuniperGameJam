@@ -18,8 +18,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
 
     [Header("TransitionUI")]
-    public Animator transiton;
-    private bool isTransitioning = false; //AMEN!!!!
+    public Animator transiton; //TRANS?!?!!
+    private float transitionTime = .333f; //How long it takes for transition to cover screen
 
     private void Awake()
     {
@@ -51,6 +51,7 @@ public class UIManager : MonoBehaviour
         SoundManager.PlaySound(SoundType.UIPositive);
         pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
         StartCoroutine(LoadLevel("Level Select"));
+        GameManager.instance.switchState(GameManager.GameState.levelSelect);
         //SceneManager.LoadScene("Game");
     }
 
@@ -59,6 +60,7 @@ public class UIManager : MonoBehaviour
         SoundManager.PlaySound(SoundType.UINegative);
         pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
         StartCoroutine(LoadLevel("Main Screen"));
+        GameManager.instance.switchState(GameManager.GameState.mainMenu);
         //SceneManager.LoadScene("Main Screen");
     }
 
@@ -91,19 +93,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadLevel(string levelName) //Transition
+    public IEnumerator LoadLevel(string levelName) //Transition (Dont switch game states here as it is used for all load scenes.
     {
-        isTransitioning = true;
-
         transiton.SetTrigger("Start");
-        yield return new WaitForSeconds(.333f); //How long it takes for transition to cover screen
+        yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(levelName);
-        isTransitioning = false;
         transiton.SetTrigger("Exit");
 
-        yield return new WaitForSeconds(.333f);
-        //transiton.Play("IdleState", 0, 0f);
-        
+        yield return new WaitForSeconds(transitionTime);
     }
 }
