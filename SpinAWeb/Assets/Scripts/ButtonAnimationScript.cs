@@ -19,9 +19,4 @@ public class ButtonAnimationScript : MonoBehaviour, IPointerEnterHandler, IPoint
     {
         buttonAnim.SetBool("isHovering", false);
     }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        buttonAnim.SetTrigger("Click");
-    }
 }
