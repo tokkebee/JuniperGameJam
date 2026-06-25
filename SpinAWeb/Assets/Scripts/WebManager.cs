@@ -27,7 +27,7 @@ public class WebManager : MonoBehaviour
     public void StartSilk() {
         currentSilk = Instantiate(silkPrefab, spinnerets);
         //Added by Billy 
-        webCollStart = spinnerets.transform.position;   
+        webCollStart = transform.InverseTransformPoint(spinnerets.position);   
         //
         silkActive = true;
 
@@ -49,7 +49,7 @@ public class WebManager : MonoBehaviour
         if (silkActive) {
             lr.SetPosition(lr.positionCount - 1, spinnerets.position);
             //Added by Billy 
-            webCollEnd = spinnerets.transform.position;
+            webCollEnd = transform.InverseTransformPoint(spinnerets.position);
 
             Vector2[] webPoints = new Vector2[]{
                 webCollStart,

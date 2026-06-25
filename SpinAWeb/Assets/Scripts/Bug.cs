@@ -15,6 +15,6 @@ public class Bug : MonoBehaviour
     {
         transform.Translate(Vector2.down * moveSpeed * Time.deltaTime, Space.World);
 
-        Raycast detector = Physics.Raycast(transform.position, Vector3.forward)
+        //Raycast detector = Physics.Raycast(transform.position, Vector3.forward); 
     }
 }
