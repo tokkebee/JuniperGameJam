@@ -33,8 +33,7 @@ public class PlayerController : MonoBehaviour
         Dead,
     }
 
-    void Start()
-    {
+    void Start() {
         //warnings
         if (webManager == null) {
             Debug.Log("Web Manager missing from Player Controller");
@@ -89,8 +88,7 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    void HandleSupported()
-    {
+    void HandleSupported() {
         MoveWASD();
         if (Input.GetKeyDown(KeyCode.Space)) {
             webManager.StartSilk();
@@ -99,6 +97,11 @@ public class PlayerController : MonoBehaviour
                 state = SpiderState.Spinning;
             }
         }
+
+        if (!IsSupported()) {
+                state = SpiderState.Falling;
+                return;
+            }
         // if (Input.GetKey(KeyCode.Space) && webManager.silkActive) {
         //     MoveSpace();
         //     SpinWeb();
@@ -124,8 +127,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void HandleFalling()
-    {
+    void HandleFalling() {
         transform.position += Vector3.down * fallSpeed * Time.deltaTime;
 
         if (IsSupported()) {
@@ -143,40 +145,12 @@ public class PlayerController : MonoBehaviour
             state = SpiderState.Dead;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        // eventually die
     }
 
-    void MoveSpace()
-    {
-        // Vector3 mousePos = camera.ScreenToWorldPoint(
-        //     new Vector3(
-        //         Input.mousePosition.x,
-        //         Input.mousePosition.y,
-        //         -camera.transform.position.z
-        //     )
-        // );
-        // mousePos.z = transform.position.z;
-
-        // Vector3 dir = (mousePos - transform.position).normalized;
-
-        // transform.position += dir * speed * Time.deltaTime;
-
+    void MoveSpace() {
         Vector3 newPos = transform.position + transform.up * speed * Time.deltaTime;
 
         ClampToScreen(ref newPos);
-
-        // float depth = transform.position.z - camera.transform.position.z;
-
-        // Vector3 min = camera.ScreenToWorldPoint(
-        //     new Vector3(0, 0, depth)
-        // );
-
-        // Vector3 max = camera.ScreenToWorldPoint(
-        //     new Vector3(Screen.width, Screen.height, depth)
-        // );
-
-        // newPos.x = Mathf.Clamp(newPos.x, min.x, max.x);
-        // newPos.y = Mathf.Clamp(newPos.y, min.y, max.y);
 
         transform.position = newPos;
     }
@@ -194,7 +168,8 @@ public class PlayerController : MonoBehaviour
         transform.position = newPos;
     }
 
-    void ClampToScreen(ref Vector3 position) { //ref is a copy of the original data point that updates the og if changed
+    void ClampToScreen(ref Vector3 position) { 
+        //ref is a copy of the original that updates the og if changed
         float depth = transform.position.z - camera.transform.position.z;
         
         Vector3 min = camera.ScreenToWorldPoint(
@@ -230,10 +205,4 @@ public class PlayerController : MonoBehaviour
 
         return hit != null;
     }
-
-    // void OnTriggerEnter2D(Collider2D other) {
-    //     if (other.CompareTag("KILL ZONE")) {
-    //         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //     }
-    // }
 }
