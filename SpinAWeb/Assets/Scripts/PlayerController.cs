@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     [Header("Dependants")]
     [SerializeField] private WebManager webManager;
 
+    public enum PlayerState {
+        Supported, //on a valid surface (branch or silk)
+        Unsupported, //invalid surface aka most likely falling
+        Dead,
+    }
+
     void Start()
     {
         //warnings

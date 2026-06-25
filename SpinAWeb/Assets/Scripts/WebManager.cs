@@ -43,19 +43,7 @@ public class WebManager : MonoBehaviour
         }
     }
 
-    // public LineRenderer getCurrentSilkLR() {
-    //     return currentSilk.GetComponent<LineRenderer>();
-    // }
-
     public void EndSilk() {
-        // float silkLength = Vector3.Distance(lr.GetPosition(0), lr.GetPosition(lr.positionCount - 1));
-        // if ((silkTotal - silkLength) >= 0) {
-        //     silkActive = false;
-        // }
-        // else {
-
-        // }
-
         if (ValidSilk()) {
             silkTotal -= Vector3.Distance(lr.GetPosition(0), lr.GetPosition(lr.positionCount - 1));
             currentSilk.transform.SetParent(web.transform, false);
@@ -73,18 +61,6 @@ public class WebManager : MonoBehaviour
     }
 
     public bool ValidSilk() {
-        //raycast apparently doesnt work well for this scenario
-        // Debug.Log("checking silk validity");
-        // //return Physics.Raycast(spinnerets.position, transform.TransformDirection(Vector3.forward), 1, branches);
-        // bool valid = Physics2D.Raycast(spinnerets.position, transform.TransformDirection(Vector3.forward), 1, branches);
-        // if (valid) {
-        //     Debug.Log("Valid silk");
-        // }
-        // else {
-        //     Debug.Log("Invalid silk");
-        // }
-        // return valid;
-
         Collider2D hit = Physics2D.OverlapCircle(
             spinnerets.position,
             0.1f,
