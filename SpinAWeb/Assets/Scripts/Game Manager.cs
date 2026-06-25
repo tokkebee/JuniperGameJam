@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// This script handles game and level code! Aka, keeping score, handling win/lose conditions, game states, etc.
+// This script handles game, aka level loading and saving/wiping data.
 
 public class GameManager : MonoBehaviour
 {

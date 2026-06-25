@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 782657615792990628}
   - component: {fileID: 65280017502633723}
   - component: {fileID: 2867172029794543445}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spider_TEMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
