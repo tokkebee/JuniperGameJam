@@ -21,7 +21,7 @@ public class BugSpawn : MonoBehaviour
     {
         float spawnX = Random.Range(0.10f, 0.90f);
 
-        Vector3 spawnPos = new Vector3(spawnX, spawnY, cam.nearClipPlane);
+        Vector3 spawnPos = new Vector3(spawnX, spawnY + 1.0f, cam.nearClipPlane);
         spawnPos = cam.ViewportToWorldPoint(spawnPos);
 
         int diceroll = Random.Range(0, 3);

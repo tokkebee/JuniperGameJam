@@ -14,6 +14,11 @@ public class WebManager : MonoBehaviour
 
     [Header("Web")]
     [SerializeField] private GameObject web;
+    //Added by Billy
+    [SerializeField] private EdgeCollider2D webCollider;
+    [SerializeField] private Vector2 webCollStart;
+    [SerializeField] private Vector2 webCollEnd;
+    //
 
     [Header("Branches")]
     [SerializeField] private LayerMask branches;
@@ -21,6 +26,9 @@ public class WebManager : MonoBehaviour
     //instantiates line of silk
     public void StartSilk() {
         currentSilk = Instantiate(silkPrefab, spinnerets);
+        //Added by Billy 
+        webCollStart = spinnerets.transform.position;   
+        //
         silkActive = true;
 
         lr = currentSilk.GetComponent<LineRenderer>();
@@ -40,6 +48,19 @@ public class WebManager : MonoBehaviour
     public void UpdateSilk() {
         if (silkActive) {
             lr.SetPosition(lr.positionCount - 1, spinnerets.position);
+            //Added by Billy 
+            webCollEnd = spinnerets.transform.position;
+
+            Vector2[] webPoints = new Vector2[]{
+                webCollStart,
+                webCollEnd
+            };
+
+            Debug.Log("Web Start: " + webCollStart);
+            Debug.Log("Web end: " + webCollEnd); 
+
+            webCollider.points = webPoints;
+            //
         }
     }
 
