@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4772019306733053567}
   - component: {fileID: 6062949437277038782}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Silk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
