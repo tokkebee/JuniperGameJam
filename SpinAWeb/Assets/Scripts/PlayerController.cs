@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && webManager.silkActive) {
             webManager.EndSilk();
         }
-        Debug.Log(webManager.silkActive);
+        //Debug.Log(webManager.silkActive);
     }
 
     void Move()
