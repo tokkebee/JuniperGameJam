@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpiderState state;
 
     [SerializeField] private Transform supportCheck;
-    [SerializeField] private float supportRadius = 0.1f;
+    [SerializeField] private float supportRadius = 0.5f;
 
     [SerializeField] private LayerMask branches;
      [SerializeField] private LayerMask silk;

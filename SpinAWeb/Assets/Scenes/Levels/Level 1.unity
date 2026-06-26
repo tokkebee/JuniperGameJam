@@ -659,7 +659,7 @@ Transform:
   m_GameObject: {fileID: 811172219}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.56, y: -0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1095,14 +1095,11 @@ MonoBehaviour:
   silkPrefab: {fileID: 1967815498440904769, guid: a9cc8d9ea50a2c24a8567140a744cd4c, type: 3}
   spinnerets: {fileID: 738525665}
   silkTotal: 100
-  silkActive: 0
   web: {fileID: 896288720}
-  webCollider: {fileID: 0}
-  webCollStart: {x: 0, y: 0}
-  webCollEnd: {x: 0, y: 0}
   branches:
     serializedVersion: 2
     m_Bits: 64
+  silkActive: 0
 --- !u!4 &1398589884
 Transform:
   m_ObjectHideFlags: 0

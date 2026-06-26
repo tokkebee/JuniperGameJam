@@ -466,6 +466,7 @@ GameObject:
   - component: {fileID: 782657615792990628}
   - component: {fileID: 65280017502633723}
   - component: {fileID: 2867172029794543445}
+  - component: {fileID: 5684322502585194940}
   m_Layer: 7
   m_Name: Spider_TEMP
   m_TagString: Untagged
@@ -489,6 +490,7 @@ Transform:
   - {fileID: 10516504958730154}
   - {fileID: 2988909867792934915}
   - {fileID: 1064430520245352254}
+  - {fileID: 7546497525333719894}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &65280017502633723
@@ -506,11 +508,11 @@ MonoBehaviour:
   camera: {fileID: 0}
   screenBounds: {x: 0, y: 0}
   speed: 6
-  fallSpeed: 0
+  fallSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
   webManager: {fileID: 0}
-  state: 0
-  supportCheck: {fileID: 0}
+  state: 2
+  supportCheck: {fileID: 7546497525333719894}
   supportRadius: 0.1
   branches:
     serializedVersion: 2
@@ -530,6 +532,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0048620a6d32d694b8e40b1618b19d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAt
+--- !u!58 &5684322502585194940
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471331377963856949}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &3495275538444770106
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +909,37 @@ Transform:
   - {fileID: 8203250266549820275}
   - {fileID: 699263198580383603}
   - {fileID: 7299634191811493361}
+  m_Father: {fileID: 782657615792990628}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6388821661720316911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7546497525333719894}
+  m_Layer: 8
+  m_Name: support check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7546497525333719894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388821661720316911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 782657615792990628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7942873686628560842

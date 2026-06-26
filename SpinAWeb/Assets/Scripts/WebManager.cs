@@ -7,12 +7,15 @@ public class WebManager : MonoBehaviour
     [SerializeField] private GameObject silkPrefab;
     [SerializeField] private Transform spinnerets;
     [SerializeField] private float silkTotal = 100f;
+    [SerializeField] private float supportRadius = 0.5f;
 
     [Header("Web")]
     [SerializeField] private GameObject web;
+    [SerializeField] public List<GameObject> placedSilks = new();
 
-    [Header("Branches Layer")]
+    [Header("Layers")]
     [SerializeField] private LayerMask branches;
+    [SerializeField] private LayerMask silk;
 
     [Header("Active")]
     private GameObject currentSilk;
@@ -34,6 +37,7 @@ public class WebManager : MonoBehaviour
 
         lr.positionCount = 2;
         lr.useWorldSpace = true;
+        ec.edgeRadius = supportRadius;
 
         startWorld = spinnerets.position;
 
@@ -72,9 +76,12 @@ public class WebManager : MonoBehaviour
     public void EndSilk() {
         if (!silkActive) return;
 
+        UpdateSilk();
+
         if (ValidSilk()) {
             silkTotal -= Vector3.Distance(startWorld, spinnerets.position);
             currentSilk.transform.SetParent(web.transform, true);
+            placedSilks.Add(currentSilk);
         }
         else {
             //Debug.Log("Invalid silk placement!");
@@ -84,18 +91,62 @@ public class WebManager : MonoBehaviour
         silkActive = false;
     }
 
-    // public bool ToggleSilkActive() {
-    //     silkActive = !silkActive;
-    //     return silkActive;
-    // }
-
     public bool ValidSilk() {
-        return Physics2D.OverlapCircle(
-            spinnerets.position,
-            0.1f,
-            branches
-        );
+        LayerMask supportLayers = branches | silk;
 
-        //return hit != null;
+        if (Physics2D.OverlapCircle(spinnerets.position, supportRadius, branches))
+            return true;
+
+        foreach (var silkObj in placedSilks) {
+            if (silkObj == null) continue;
+
+            var lr = silkObj.GetComponent<LineRenderer>();
+            if (lr == null) continue;
+
+            Vector3 a = lr.GetPosition(0);
+            Vector3 b = lr.GetPosition(1);
+
+            Vector3 p = spinnerets.position;
+
+            float distance = DistancePointToSegment(p, a, b);
+
+            if (distance < supportRadius)
+                return true;
+        }
+
+        // Collider2D[] hits = Physics2D.OverlapCircleAll(
+        //     spinnerets.position,
+        //     0.5f,
+        //     supportLayers
+        // );
+
+        // foreach (var hit in hits)
+        // {
+        //     if (hit.transform.IsChildOf(currentSilk.transform))
+        //         continue;
+
+        //     if (hit.gameObject == currentSilk)
+        //         continue;
+
+        //     if (((1 << hit.gameObject.layer) & supportLayers) != 0) {
+        //         return true;
+        //     }
+        // }
+
+        return false;
+
+        // Collider2D hit = Physics2D.OverlapPoint(spinnerets.position, supportLayers);
+        // return hit != null;
+    }
+
+    private float DistancePointToSegment(Vector3 p, Vector3 a, Vector3 b) {
+        Vector3 ab = b - a;
+        Vector3 ap = p - a;
+
+        float t = Vector3.Dot(ap, ab) / Vector3.Dot(ab, ab);
+        t = Mathf.Clamp01(t);
+
+        Vector3 closest = a + ab * t;
+        return Vector3.Distance(p, closest);
     }
 }
