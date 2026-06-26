@@ -1906,7 +1906,7 @@ ScriptedImporter:
     - {x: 155, y: 156}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 389, y: 261}
+    spritePosition: {x: 917, y: 358}
   - name: Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2549,7 +2549,7 @@ ScriptedImporter:
     - {x: 52, y: 53}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 796}
-    spritePosition: {x: 312, y: 851}
+    spritePosition: {x: 840, y: 948}
   - name: Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3159,7 +3159,7 @@ ScriptedImporter:
     - {x: 49, y: 50}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 843}
-    spritePosition: {x: 312, y: 793}
+    spritePosition: {x: 840, y: 890}
   - name: Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3824,7 +3824,7 @@ ScriptedImporter:
     - {x: 54, y: 55}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 890}
-    spritePosition: {x: 312, y: 730}
+    spritePosition: {x: 840, y: 827}
   - name: Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4566,7 +4566,7 @@ ScriptedImporter:
     - {x: 61, y: 62}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 937}
-    spritePosition: {x: 578, y: 851}
+    spritePosition: {x: 1106, y: 948}
   - name: Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5286,7 +5286,7 @@ ScriptedImporter:
     - {x: 59, y: 60}
     tessellationDetail: 0
     uvTransform: {x: 278, y: 4}
-    spritePosition: {x: 578, y: 793}
+    spritePosition: {x: 1106, y: 890}
   - name: Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -6028,7 +6028,7 @@ ScriptedImporter:
     - {x: 61, y: 62}
     tessellationDetail: 0
     uvTransform: {x: 278, y: 51}
-    spritePosition: {x: 578, y: 730}
+    spritePosition: {x: 1106, y: 827}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []

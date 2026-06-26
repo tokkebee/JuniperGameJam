@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 437224205}
   - component: {fileID: 437224206}
   m_Layer: 0
-  m_Name: Programmer
+  m_Name: Code
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 667838557}
   - component: {fileID: 667838558}
   m_Layer: 5
-  m_Name: Artist
+  m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 1019093865}
   - component: {fileID: 1019093864}
   m_Layer: 5
-  m_Name: ArtistHeader
+  m_Name: ArtHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ARTIST
+  m_text: ART
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
   m_sharedMaterial: {fileID: 8665513947000456993, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TEMP OLLIE
+  m_text: tokkebee
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
   m_sharedMaterial: {fileID: 8665513947000456993, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
@@ -2625,7 +2625,7 @@ GameObject:
   - component: {fileID: 1895684842}
   - component: {fileID: 1895684841}
   m_Layer: 5
-  m_Name: ProgrammerHeader
+  m_Name: CodeHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PROGRAMMER
+  m_text: CODE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
   m_sharedMaterial: {fileID: 8665513947000456993, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
