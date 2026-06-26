@@ -292,3 +292,5 @@ MonoBehaviour:
   - type: 8
     audioClip: {fileID: 8300000, guid: 1022c9ae6f0e0224abbfda8cbd2b8e65, type: 3}
   loopingAudioSource: {fileID: 4574031523810254528}
+  musicGroup: {fileID: -9153833727628381767, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
+  musicReverbGroup: {fileID: 9171310218753817529, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
