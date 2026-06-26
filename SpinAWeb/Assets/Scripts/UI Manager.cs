@@ -21,18 +21,18 @@ public class UIManager : MonoBehaviour
     public Animator transiton; //TRANS?!?!!
     private float transitionTime = .333f; //How long it takes for transition to cover screen
 
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+    // private void Awake()
+    // {
+    //     if (instance != null && instance != this)
+    //     {
+    //         Destroy(gameObject);
+    //         return;
+    //     }
 
-        instance = this;
+    //     instance = this;
 
-        DontDestroyOnLoad(gameObject);
-    }
+    //     DontDestroyOnLoad(gameObject);
+    // }
 
     void OnGUI()
     {
