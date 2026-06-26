@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update() {
+        if (GameManager.instance != null &&
+            GameManager.instance.getCurrentGameState() == GameManager.GameState.pause)
+        {
+            return;
+        }
         switch (state)
         {
             case SpiderState.Supported:

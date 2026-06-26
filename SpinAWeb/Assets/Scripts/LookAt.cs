@@ -11,6 +11,9 @@ public class LookAt : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.getCurrentGameState() == GameManager.GameState.pause)
+            return;
+            
         Vector3 mousePos = camera.ScreenToWorldPoint(
             new Vector3(
                 Input.mousePosition.x,

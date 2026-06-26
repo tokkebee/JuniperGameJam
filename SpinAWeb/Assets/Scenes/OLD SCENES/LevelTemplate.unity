@@ -132,10 +132,6 @@ PrefabInstance:
       value: UI Manager
       objectReference: {fileID: 0}
     - target: {fileID: 3848693986365764024, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
-      propertyPath: transiton
-      value: 
-      objectReference: {fileID: 1272221911}
-    - target: {fileID: 3848693986365764024, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: pausePanel
       value: 
       objectReference: {fileID: 1112319209}
@@ -264,40 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a36023f04abef841bb8487d2305dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WebManager
---- !u!95 &217809292
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481526}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: adc0d09c35abacf4481a77fd99914f0d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &217809293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c9ab0ace18a2144b225af31d9d337f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimationScript
 --- !u!1001 &306211812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 1088639891}
     - target: {fileID: 3149145677786667693, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePanel
+      value: UnPause
       objectReference: {fileID: 0}
     - target: {fileID: 5811978393034235889, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -661,159 +623,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1431916034903792881, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654481533}
-    - targetCorrespondingSourceObject: {fileID: 1431916034903792881, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654481532}
-    - targetCorrespondingSourceObject: {fileID: 7268258346910477835, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 217809293}
-    - targetCorrespondingSourceObject: {fileID: 7268258346910477835, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 217809292}
-    - targetCorrespondingSourceObject: {fileID: 8048364769079735194, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654481531}
-    - targetCorrespondingSourceObject: {fileID: 8048364769079735194, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654481530}
-    - targetCorrespondingSourceObject: {fileID: 54461889463230944, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654481529}
-    - targetCorrespondingSourceObject: {fileID: 54461889463230944, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654481528}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
 --- !u!224 &654481523 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8794632049901609340, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
   m_PrefabInstance: {fileID: 654481522}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &654481524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 54461889463230944, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-  m_PrefabInstance: {fileID: 654481522}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &654481525 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8048364769079735194, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-  m_PrefabInstance: {fileID: 654481522}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &654481526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7268258346910477835, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-  m_PrefabInstance: {fileID: 654481522}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &654481527 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1431916034903792881, guid: 0299ba4745441414eb9fa1c7c3e0487c, type: 3}
-  m_PrefabInstance: {fileID: 654481522}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &654481528
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481524}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: adc0d09c35abacf4481a77fd99914f0d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &654481529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c9ab0ace18a2144b225af31d9d337f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimationScript
---- !u!95 &654481530
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481525}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: adc0d09c35abacf4481a77fd99914f0d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &654481531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c9ab0ace18a2144b225af31d9d337f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimationScript
---- !u!95 &654481532
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481527}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: adc0d09c35abacf4481a77fd99914f0d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &654481533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654481527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c9ab0ace18a2144b225af31d9d337f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimationScript
 --- !u!1 &655832415 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4509135729115481366, guid: 01acb3c2c7bcb9b4bbb7de3463f4cd85, type: 3}
@@ -1875,7 +1691,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1088639891}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: TogglePanel
+        m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
