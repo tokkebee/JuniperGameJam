@@ -12,7 +12,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance { get; private set; }
+    //public static UIManager instance { get; private set; }
 
     [Header("PauseUI")]
     [SerializeField] private GameObject pausePanel;
@@ -32,7 +32,17 @@ public class UIManager : MonoBehaviour
     //     instance = this;
 
     //     DontDestroyOnLoad(gameObject);
+
+    //     if (pausePanel != null) {
+    //         pausePanel.SetActive(false);
+    //     }
     // }
+
+    private void Awake() {
+        if (pausePanel != null) {
+            pausePanel.SetActive(false);
+        }
+    }
 
     void OnGUI()
     {
@@ -49,7 +59,9 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         SoundManager.PlaySound(SoundType.UIPositive);
-        pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
+
+        if (pausePanel != null) pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
+
         StartCoroutine(LoadLevel("Level Select"));
         GameManager.instance.switchState(GameManager.GameState.levelSelect);
         //SceneManager.LoadScene("Game");
@@ -58,7 +70,9 @@ public class UIManager : MonoBehaviour
     public void QuitToTitle()
     {
         SoundManager.PlaySound(SoundType.UINegative);
-        pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
+
+        if (pausePanel != null) pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
+
         StartCoroutine(LoadLevel("Main Screen"));
         GameManager.instance.switchState(GameManager.GameState.mainMenu);
         //SceneManager.LoadScene("Main Screen");

@@ -5,6 +5,7 @@ public class MainMenuScript : MonoBehaviour
 {
     [SerializeField] Button playButton;
     [SerializeField] Button exitButton;
+    [SerializeField] private UIManager uiManager;
 
     private void Awake()
     {
@@ -13,8 +14,8 @@ public class MainMenuScript : MonoBehaviour
     void ButtonRebinder() //To fix issue when UIManager leaving scene, buttons lose their reference
     { 
         playButton.onClick.RemoveAllListeners();
-        playButton.onClick.AddListener(UIManager.instance.StartGame);
+        playButton.onClick.AddListener(uiManager.StartGame);
         exitButton.onClick.RemoveAllListeners();
-        exitButton.onClick.AddListener(UIManager.instance.QuitToDesktop);
+        exitButton.onClick.AddListener(uiManager.QuitToDesktop);
     }
 }

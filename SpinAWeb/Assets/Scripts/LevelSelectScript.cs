@@ -4,27 +4,36 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class LevelSelectScript : MonoBehaviour
-{
-    [SerializeField] private int numScenesBeforeLevelSelect;
+public class LevelSelectScript : MonoBehaviour {
+    [SerializeField] private List<string> levelScenes;
     [SerializeField] private GameObject LevelsGameObject;
     [SerializeField] private TMP_FontAsset levelFont;
 
-    private float unlockedAlpha = 1f;
     [SerializeField] private float lockedLevelAlpha = .2f;
+    private int highestUnlocked;
+
+    [SerializeField] private UIManager uiManager;
 
     private void Start()
     {
+        highestUnlocked = PlayerPrefs.GetInt("HighestLevelUnlocked", 1);
         IdentifyButtons();
     }
 
     public void OpenScene(int levelNumber)
     {
-        if (levelNumber <= GameManager.instance.highestLevelUnlocked)
+        int index = levelNumber - 1;
+
+        if (index < 0 || index >= levelScenes.Count) return;
+
+        if (levelNumber <= highestUnlocked)
         {
             SoundManager.PlaySound(SoundType.UIPositive);
-            StartCoroutine(UIManager.instance.LoadLevel($"Level {levelNumber}"));
+            Debug.Log($"uiManager = {uiManager}");
+            Debug.Log($"Level index = {index}, scene = {levelScenes[index]}");
+            StartCoroutine(uiManager.LoadLevel(levelScenes[index]));
 
             GameManager.instance.switchState(GameManager.GameState.game); //Enter game Gamestate
             //SceneManager.LoadScene(levelNumber + numScenesBeforeLevelSelect);
@@ -40,23 +49,18 @@ public class LevelSelectScript : MonoBehaviour
         for (int i = 0; i < LevelsGameObject.transform.childCount; i++)
         {
             GameObject currentLevel = LevelsGameObject.transform.GetChild(i).gameObject;
+            
             Image image = currentLevel.GetComponent<Image>();
-            TextMeshProUGUI buttonText = currentLevel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI buttonText = currentLevel.transform.GetChild(0).gameObject.
+            GetComponent<TextMeshProUGUI>();
+            
             buttonText.text = (i+1).ToString();
             buttonText.font = levelFont;
 
             Color tempColor = image.color;
 
-            if (i < GameManager.instance.highestLevelUnlocked)
-            {
-                tempColor.a = unlockedAlpha;
-                image.color = tempColor;
-            }
-            else
-            {
-                tempColor.a = lockedLevelAlpha;
-                image.color = tempColor;
-            }
+            tempColor.a = (i < highestUnlocked) ? 1f : lockedLevelAlpha;
+            image.color = tempColor;
         }
     }
 
