@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BugSpawn : MonoBehaviour
 {
-    public Camera cam;
+    [SerializeField] Camera cam;
     public Vector3 camSpace;
 
     private float spawnY = 1.0f;
@@ -14,6 +14,7 @@ public class BugSpawn : MonoBehaviour
     void Start()
     {
         active = true;
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>(); 
         StartCoroutine(BugDrop()); 
     }
 
