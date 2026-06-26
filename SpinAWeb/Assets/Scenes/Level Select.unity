@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 170}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91246640
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 50, y: 50}
+  m_Spacing: {x: 200, y: 120}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!1 &387241977
@@ -488,7 +488,7 @@ RectTransform:
   m_GameObject: {fileID: 737630090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.666922, y: 2.666922, z: 2.666922}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 799777288}
@@ -794,7 +794,7 @@ RectTransform:
   m_GameObject: {fileID: 819897194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.666922, y: 2.666922, z: 2.666922}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 387241978}
@@ -963,7 +963,7 @@ RectTransform:
   m_GameObject: {fileID: 833801194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.666922, y: 2.666922, z: 2.666922}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1406001752}
@@ -1370,6 +1370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelectScript
   levelScenes:
   - 1_Level
+  - 2_Level
+  - 3_Level
   LevelsGameObject: {fileID: 91246638}
   levelFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   lockedLevelAlpha: 0.2
