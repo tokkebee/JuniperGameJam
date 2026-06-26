@@ -32,7 +32,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 100
@@ -104,7 +104,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 1735
+      y: 1720
       width: 3973
       height: 649
     spriteID: bd851cd02ec8d2a488db9d6a9f0c6fc6
@@ -115,8 +115,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1735}
-    spritePosition: {x: 522, y: 1909}
+    uvTransform: {x: 4, y: 1720}
+    spritePosition: {x: 587, y: 36}
   - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -125,10 +125,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
+      x: 0
       y: 4
       width: 4349
-      height: 1723
+      height: 1696
     spriteID: 9b4f4256eb66f844f979ce457397e83a
     spriteBone: []
     spriteOutline: []
@@ -138,7 +138,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 399, y: 1185}
+    spritePosition: {x: 399, y: 1663}
   - name: Layer 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -160,7 +160,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4361, y: 4}
-    spritePosition: {x: 699, y: 1899}
+    spritePosition: {x: 587, y: 361}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []
@@ -179,7 +179,31 @@ ScriptedImporter:
     characterGroups: []
     pivot: {x: 0, y: 0}
     boneReadOnly: 0
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
   documentPivot: {x: 0, y: 0}
@@ -214,7 +238,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: bd851cd02ec8d2a488db9d6a9f0c6fc6
     layerID: 7
-    mosaicPosition: {x: 4, y: 1735}
+    mosaicPosition: {x: 4, y: 1720}
     flatten: 0
     isImported: 1
     isVisible: 1
