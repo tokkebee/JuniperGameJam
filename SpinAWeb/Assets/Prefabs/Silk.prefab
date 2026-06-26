@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4772019306733053567}
   - component: {fileID: 6062949437277038782}
-  - component: {fileID: -5029034590557548568}
+  - component: {fileID: 4948167599852088493}
   m_Layer: 7
   m_Name: Silk
   m_TagString: Untagged
@@ -142,7 +142,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!68 &-5029034590557548568
+--- !u!68 &4948167599852088493
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,9 +179,9 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.07885184, y: -0.49374324}
-  - {x: 2.1518662, y: 5.504861}
-  m_AdjacentStartPoint: {x: -0.08282597, y: -0.49309215}
-  m_AdjacentEndPoint: {x: 2.5008328, y: 5.501197}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0

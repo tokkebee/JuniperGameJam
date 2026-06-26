@@ -505,8 +505,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   camera: {fileID: 0}
   screenBounds: {x: 0, y: 0}
-  speed: 10
+  speed: 6
+  fallSpeed: 0
+  moveDirection: {x: 0, y: 0, z: 0}
   webManager: {fileID: 0}
+  state: 0
+  supportCheck: {fileID: 0}
+  supportRadius: 0.1
+  branches:
+    serializedVersion: 2
+    m_Bits: 64
+  silk:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &2867172029794543445
 MonoBehaviour:
   m_ObjectHideFlags: 0
