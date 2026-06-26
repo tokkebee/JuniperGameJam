@@ -6,6 +6,7 @@ public class WebManager : MonoBehaviour
     [Header("Silk")]
     [SerializeField] private GameObject silkPrefab;
     [SerializeField] private Transform spinnerets;
+    [SerializeField] private Image silkMeter;
     [SerializeField] private float silkTotal = 100f;
     [SerializeField] private float supportRadius = 0.5f;
 
@@ -46,12 +47,6 @@ public class WebManager : MonoBehaviour
         lr.SetPosition(1, startWorld);
 
         ec.SetPoints(new List<Vector2> {Vector2.zero, Vector2.zero}); //edge collider uses local space
-
-        // if (!ValidSilk()) {
-        //     Debug.Log("Invalid silk placement!");
-        //     silkActive = false;
-        //     Destroy(currentSilk);
-        // }
     }
 
     //updates position of a silk's last vertex
@@ -88,7 +83,7 @@ public class WebManager : MonoBehaviour
             //Debug.Log("Invalid silk placement!");
             Destroy(currentSilk);
         }
-
+        currentSilk = null;
         silkActive = false;
     }
 
@@ -114,30 +109,7 @@ public class WebManager : MonoBehaviour
             if (distance < supportRadius)
                 return true;
         }
-
-        // Collider2D[] hits = Physics2D.OverlapCircleAll(
-        //     spinnerets.position,
-        //     0.5f,
-        //     supportLayers
-        // );
-
-        // foreach (var hit in hits)
-        // {
-        //     if (hit.transform.IsChildOf(currentSilk.transform))
-        //         continue;
-
-        //     if (hit.gameObject == currentSilk)
-        //         continue;
-
-        //     if (((1 << hit.gameObject.layer) & supportLayers) != 0) {
-        //         return true;
-        //     }
-        // }
-
         return false;
-
-        // Collider2D hit = Physics2D.OverlapPoint(spinnerets.position, supportLayers);
-        // return hit != null;
     }
 
     private float DistancePointToSegment(Vector3 p, Vector3 a, Vector3 b) {
