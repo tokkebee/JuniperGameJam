@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+using static System.TimeZoneInfo;
 
 //To play sounds from SoundType lists
 //SoundManager.PlaySound(SoundType.{SOUNDTYPE}, {OPTIONAL FLOAT FOR VOLUME});
@@ -19,8 +21,8 @@ public enum SoundType //To add more sounds, make more enums below and give type 
     FlyBugs,
     UIPositive,
     UINegative,
-    Music,
-    Ambiance
+    MenuMusic,
+    GameMusic
 }
 
 [RequireComponent(typeof(AudioSource))]
@@ -31,6 +33,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundList[] soundList;
     public static SoundManager instance;
     private AudioSource audioSource;
+
+    [Header("Music Settings")]
+    [SerializeField] private AudioSource loopingAudioSource;
+    [SerializeField] private AudioMixerGroup musicGroup;
+    [SerializeField] private AudioMixerGroup musicReverbGroup;
+    private float transitionTime = .333f; //.333f because thats how long it takes for transition to play
 
 
 
@@ -45,7 +53,6 @@ public class SoundManager : MonoBehaviour
         instance = this;
 
         DontDestroyOnLoad(gameObject);
-
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -59,7 +66,44 @@ public class SoundManager : MonoBehaviour
                 return;
             }
         }
-        Debug.LogWarning($"Sound {sound} not found.");
+        Debug.LogWarning($"Sound: {sound} not found.");
+    }
+
+    #region GameMusic //How to use: StartCoroutine(SoundManager.MusicTransition(SoundType.{MUSIC ENUM}));
+    public static IEnumerator MusicTransition(SoundType music) 
+    {
+        instance.loopingAudioSource.loop = true;
+        foreach (SoundList i in instance.soundList)
+        {
+            if (i.type == music) //finds music
+            {
+                if (instance.loopingAudioSource.clip != i.audioClip) //checks if its not already playing
+                {
+                    instance.loopingAudioSource.clip = i.audioClip;
+                    instance.loopingAudioSource.volume = Mathf.Lerp(1, 0, instance.transitionTime);
+                    yield return new WaitForSeconds(instance.transitionTime);
+                    instance.loopingAudioSource.volume = Mathf.Lerp(0, 1, instance.transitionTime);
+                    instance.loopingAudioSource.Play();
+                    yield break;
+                }
+                else 
+                {
+                    yield break;
+                }
+            }
+        }
+        Debug.LogWarning($"Music: {music} not found.");
+    }
+    #endregion
+
+    public static void onPauseMusic()
+    {
+        instance.loopingAudioSource.outputAudioMixerGroup = instance.musicReverbGroup;
+    }
+
+    public static void onUnpauseMusic()
+    {
+        instance.loopingAudioSource.outputAudioMixerGroup = instance.musicGroup;
     }
 
     [System.Serializable]

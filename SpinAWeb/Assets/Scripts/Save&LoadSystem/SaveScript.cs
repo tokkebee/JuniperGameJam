@@ -15,6 +15,7 @@ public static class SaveScript
 
         formatter.Serialize(stream, data);
         stream.Close();
+        Debug.Log("Saved Successfully");
     }
 
     public static PlayerDataScript Load(GameManager gameManager)
@@ -26,6 +27,9 @@ public static class SaveScript
             FileStream stream = new FileStream(path, FileMode.Open);
             PlayerDataScript data = formatter.Deserialize(stream) as PlayerDataScript;
             stream.Close();
+
+            Debug.Log("Loaded Successfully");
+
             return data;
         }
         else
