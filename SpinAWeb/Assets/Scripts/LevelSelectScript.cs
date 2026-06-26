@@ -11,8 +11,8 @@ public class LevelSelectScript : MonoBehaviour
     [SerializeField] private GameObject LevelsGameObject;
     [SerializeField] private TMP_FontAsset levelFont;
 
-    [SerializeField] private Color unlockedLevelColor = Color.white;
-    [SerializeField] private Color lockedLevelColor = Color.grey;
+    private float unlockedAlpha = 1f;
+    [SerializeField] private float lockedLevelAlpha = .2f;
 
     private void Start()
     {
@@ -45,13 +45,17 @@ public class LevelSelectScript : MonoBehaviour
             buttonText.text = (i+1).ToString();
             buttonText.font = levelFont;
 
+            Color tempColor = image.color;
+
             if (i < GameManager.instance.highestLevelUnlocked)
             {
-                image.color = unlockedLevelColor;
+                tempColor.a = unlockedAlpha;
+                image.color = tempColor;
             }
             else
-            { 
-                image.color = lockedLevelColor;
+            {
+                tempColor.a = lockedLevelAlpha;
+                image.color = tempColor;
             }
         }
     }
