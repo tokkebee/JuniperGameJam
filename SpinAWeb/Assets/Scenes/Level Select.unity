@@ -1371,7 +1371,7 @@ MonoBehaviour:
   levelScenes:
   - 1_Level
   LevelsGameObject: {fileID: 91246638}
-  levelFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  levelFont: {fileID: 11400000, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
   lockedLevelAlpha: 0.2
   uiManager: {fileID: 1236827591}
 --- !u!4 &1108837614
