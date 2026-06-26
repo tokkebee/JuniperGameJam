@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,12 +109,12 @@ TextureImporter:
       name: bug_webbed_transparent_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 329
-        width: 620
-        height: 745
+        x: 189
+        y: 343
+        width: 608
+        height: 753
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -131,12 +131,12 @@ TextureImporter:
       name: bug_webbed_transparent_1
       rect:
         serializedVersion: 2
-        x: 836
-        y: 365
-        width: 441
-        height: 575
+        x: 720
+        y: 733
+        width: 5
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: bug_webbed_transparent_2
       rect:
         serializedVersion: 2
-        x: 1293
-        y: 385
-        width: 562
-        height: 507
+        x: 837
+        y: 366
+        width: 439
+        height: 574
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,11 +171,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: bug_webbed_transparent_3
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 386
+        width: 560
+        height: 505
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8170fecf4ab77949b2c9d54c978af9b
+      internalID: -549072071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bug_webbed_transparent_4
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 508
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b2424a9e9d4db469da4ab7a7c7e2d3
+      internalID: -926745141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1dfa4860105bd6f4f8c866cf8c6f2e95
     internalID: 0
     vertices: []
     indices: 
@@ -183,11 +227,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       bug_webbed_transparent_0: 4477375036378222435
       bug_webbed_transparent_1: -1631760719235202543
       bug_webbed_transparent_2: -5609295883471939213
+      bug_webbed_transparent_3: -549072071
+      bug_webbed_transparent_4: -926745141
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

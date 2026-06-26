@@ -5,11 +5,16 @@ public class Bug : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
     public Vector2 moveDir; 
+    // the bug scriptable object, refernce this to acces points values. 
     public BugSO bugSO;
     public BugSpawn bs; 
     LayerMask webbing;
     public WebManager wm;
-    public float activationTime; 
+    public float activationTime;
+    public GameObject bugRig;
+
+    public SpriteRenderer sr;
+    public Color webcolor;
 
     public enum bugState
     {
@@ -21,6 +26,8 @@ public class Bug : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        webcolor = Color.white;
         moveDir = Vector2.down;
         currentBugState = bugState.free;
         webbing = LayerMask.GetMask("Silk");
@@ -50,7 +57,12 @@ public class Bug : MonoBehaviour
     {
         if (other.gameObject.layer == 7 && other.gameObject != wm.currentSilk)
         {
-            Invoke("WebCatch", 0.1f); 
+            Invoke("WebCatch", 0.1f);
+            sr.transform.localScale = new Vector2(0.1f, 0.1f); 
+            sr.sprite = bugSO.caughtImage; 
+            sr.color = webcolor;
+            webcolor.a = 1.0f; 
+            bugRig.SetActive(false);
         }
         if (other.gameObject.tag == "Boundary")
         {
