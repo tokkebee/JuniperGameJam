@@ -12,6 +12,7 @@ public class WebManager : MonoBehaviour
     [Header("Web")]
     [SerializeField] private GameObject web;
     [SerializeField] public List<GameObject> placedSilks = new();
+    public int caughtBugs; 
 
     [Header("Layers")]
     [SerializeField] private LayerMask branches;
