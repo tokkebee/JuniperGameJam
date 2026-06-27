@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 // This script handles all player movement
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask branches;
     [SerializeField] private LayerMask silk;
     [SerializeField] private LayerMask leaves;
+
+    [Header("Animations")]
+    [SerializeField] private Animator animator;
 
 
     private bool isDead = false;
@@ -81,6 +85,8 @@ public class PlayerController : MonoBehaviour
                 HandleDead();
                 break;
         }
+
+        animationFunction();
     }
 
     void HandleSupported() {
@@ -201,5 +207,26 @@ public class PlayerController : MonoBehaviour
         );
 
         return hit != null;
+    }
+
+    private void animationFunction()
+    {
+        if (Input.GetKey(KeyCode.Space) == true)
+        {
+            animator.SetFloat("Magnitude", 1);
+        }
+        else
+        {
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
+
+            Vector3 moveDirection = new Vector3(moveX, moveY, 0).normalized;
+
+            Vector3 newPos = transform.position + moveDirection * speed * Time.deltaTime;
+
+            //Animations below
+            float magnitude = (newPos - transform.position).magnitude / Time.deltaTime;
+            animator.SetFloat("Magnitude", magnitude);
+        }
     }
 }

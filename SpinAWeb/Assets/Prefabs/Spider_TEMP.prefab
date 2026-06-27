@@ -68,6 +68,7 @@ MonoBehaviour:
   leaves:
     serializedVersion: 2
     m_Bits: 512
+  animator: {fileID: 5248141912692578156}
 --- !u!114 &2867172029794543445
 MonoBehaviour:
   m_ObjectHideFlags: 0
