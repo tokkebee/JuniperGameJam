@@ -30,7 +30,7 @@ public class Bug : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D  other)
     {
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer == 7 && other.gameObject != wm.currentSilk)
         {
             Invoke("WebCatch", 0.1f); 
         }

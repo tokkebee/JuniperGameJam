@@ -115,14 +115,14 @@ public class PlayerController : MonoBehaviour
     }
 
     void HandleSpinning() {
-        Vector3 oldPos = transform.position;
+        //Vector3 oldPos = transform.position;
         MoveSpace();
-        Vector3 newPos = transform.position;
+        //Vector3 newPos = transform.position;
 
         webManager.UpdateSilk();
         //webManager.UpdateSilk();
 
-        if (Input.GetKeyUp(KeyCode.Space) || webManager.GetSilkRemaining() <= 0f) {
+        if (Input.GetKeyUp(KeyCode.Space)) {
             webManager.EndSilk();
 
             state = IsSupported() ? SpiderState.Supported : SpiderState.Falling;
@@ -158,13 +158,12 @@ public class PlayerController : MonoBehaviour
         //float maxMove = speed * Time.deltaTime;
         //float moveDistance = Mathf.Min(maxMove, webManager.GetSilkRemaining());
 
-        Vector3 oldPos = transform.position;
-        Vector3 newPos = oldPos + transform.up * moveDistance;
+        Vector3 newPos = transform.position + transform.up * moveDistance;
 
         ClampToScreen(ref newPos);
         transform.position = newPos;
 
-        webManager.ConsumeSilk(Vector3.Distance(oldPos, newPos));
+        //webManager.ConsumeSilk(Vector3.Distance(oldPos, newPos));
 
         // if (IsSupported()) {
         //     state = SpiderState.Supported;

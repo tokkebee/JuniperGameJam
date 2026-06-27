@@ -648,6 +648,10 @@ PrefabInstance:
       propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1932786248546028723, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3426090976436595755, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_Name
       value: UI Manager

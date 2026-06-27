@@ -15,11 +15,11 @@ public class WebManager : MonoBehaviour
     private LineRenderer lr;
     private EdgeCollider2D ec;
 
-    private Vector3 lastPoint;
     private Vector3 startPoint;
+    private Vector3 currentPoint;
 
-    private float silkRemaining;
-    private float silkUsedThisLine;
+    [SerializeField] private float silkRemaining;
+    [SerializeField] private float silkUsedThisLine;
 
     private float supportRadius = 0.5f;
 
@@ -50,8 +50,8 @@ public class WebManager : MonoBehaviour
         silkActive = true;
 
         startPoint = spinnerets.position;
-        lastPoint = startPoint;
-        silkUsedThisLine = 0f;
+        currentPoint = startPoint;
+        //silkUsedThisLine = 0f;
 
         lr.positionCount = 2;
         lr.useWorldSpace = true;
@@ -70,7 +70,7 @@ public class WebManager : MonoBehaviour
         if (!silkActive) return;
         //if (silkRemaining <= 0f) return;
 
-        Vector3 currentPoint = spinnerets.position;
+        currentPoint = spinnerets.position;
 
         //lr (world space)
         lr.SetPosition(0, startPoint);
@@ -85,25 +85,24 @@ public class WebManager : MonoBehaviour
             localEnd
         });
 
-        float delta = Vector3.Distance(lastPoint, currentPoint);
-        ConsumeSilk(delta);
-        silkUsedThisLine += delta;
+        silkUsedThisLine = Vector3.Distance(startPoint, currentPoint);
+        silkRemaining = Mathf.Clamp(maxSilk - silkUsedThisLine, 0f, maxSilk);
 
-        lastPoint = currentPoint;
+        UpdateSilkMeter();
 
         if (silkRemaining <= 0f) {
-            EndSilk(true);
+            EndSilk(refund: true);
         }
 
         //UpdateSilkMeter();
     }
 
-    public void EndSilk(bool refundUnused = false) {
+    public void EndSilk(bool refund = false) {
         if (!silkActive) return;
 
-        //UpdateSilk();
+        UpdateSilk();
 
-        if (refundUnused) {
+        if (refund) {
             silkRemaining = Mathf.Clamp(silkRemaining + silkUsedThisLine, 0f, maxSilk);
         }
 
@@ -119,6 +118,9 @@ public class WebManager : MonoBehaviour
         }
         currentSilk = null;
         silkActive = false;
+        silkUsedThisLine = 0f;
+
+        UpdateSilkMeter();
     }
 
     public float GetSilkRemaining() => silkRemaining;
@@ -133,16 +135,11 @@ public class WebManager : MonoBehaviour
             silkMeter.fillAmount = silkRemaining / maxSilk;
     }
 
-    // public void UpdateSilkMeter() {
-    //     float usedSilk = Vector3.Distance(previousEnd, spinnerets.position);
-
-    //     silkRemaining -= usedSilk;
-    //     silkRemaining = Mathf.Max(0f, silkRemaining);
-
-    //     silkMeter.fillAmount = silkRemaining / maxSilk;
-
-    //     previousEnd = spinnerets.position;
-    // }
+    public void UpdateSilkMeter() {
+        if (silkMeter != null) {
+            silkMeter.fillAmount = silkRemaining / maxSilk;
+        }
+    }
 
     public bool ValidSilk() {
         LayerMask supportLayers = branches | silk;
@@ -159,9 +156,7 @@ public class WebManager : MonoBehaviour
             Vector3 a = lr.GetPosition(0);
             Vector3 b = lr.GetPosition(1);
 
-            Vector3 p = spinnerets.position;
-
-            float distance = DistancePointToSegment(p, a, b);
+            float distance = DistancePointToSegment(spinnerets.position, a, b);
 
             if (distance < supportRadius)
                 return true;
