@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 // this script handles the game's operations per level.
 public class LevelManager : MonoBehaviour {
@@ -8,7 +9,7 @@ public class LevelManager : MonoBehaviour {
 
     [Header("Win Conditions")]
     [SerializeField] public int bugsQuota = 5;
-    [SerializeField] public int bugsCaught;
+    [SerializeField] public int bugsCaught = 0;
 
     [Header("UI Elements")]
     [SerializeField] private GameObject gameLoseScreen;
@@ -18,6 +19,9 @@ public class LevelManager : MonoBehaviour {
     [Header("Dependants")]
     [SerializeField] private WebManager webManager;
 
+    private bool WinConHasEnded = false;
+    private bool LoseConHasEnded = false;
+
     public enum LevelState {
         Play,
         Win,
@@ -25,6 +29,7 @@ public class LevelManager : MonoBehaviour {
     }
     void Start() {
         UpdateBugQuota();
+        Time.timeScale = 1f; //bug fix, when going into next round, time would be paused
     }
 
     void Update() {
@@ -53,16 +58,26 @@ public class LevelManager : MonoBehaviour {
 
     private void GamePlay() {
         if (currentLevelState == LevelState.Play) {
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f; //Commented out. Made it so that pausing wouldnt work while in play state
             gameLoseScreen.SetActive(false);
             gameWinScreen.SetActive(false);
         }
     }
 
     public void GameLose() {
+        /*
         if (currentLevelState == LevelState.Lose) {
-            Time.timeScale = 0f;
             gameLoseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        */
+        //currentLevelState = LevelState.Lose; //PlayerController is calling gamelose but never switches state so the if statement never runs
+        if (LoseConHasEnded == false)
+        {
+            gameLoseScreen.SetActive(true);
+            currentLevelState = LevelState.Lose;
+            //Time.timeScale = 0f;
+            LoseConHasEnded = true;
         }
     }
 
@@ -70,6 +85,15 @@ public class LevelManager : MonoBehaviour {
         if (currentLevelState == LevelState.Win) {
             Time.timeScale = 0f;
             gameWinScreen.SetActive(true);
+        }
+        if (WinConHasEnded == false)
+        {
+            if (GameManager.instance.highestLevelUnlocked == SceneManager.GetActiveScene().buildIndex - 2) //Hardcoded -2 because time constraint
+            {
+                GameManager.instance.highestLevelUnlocked++;
+            }
+            GameManager.instance.SaveGame();
+            WinConHasEnded = true;
         }
     }
 

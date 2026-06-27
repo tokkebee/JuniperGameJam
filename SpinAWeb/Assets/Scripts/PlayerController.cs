@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 // This script handles all player movement
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask silk;
     [SerializeField] private LayerMask leaves;
 
+    [Header("Animations")]
+    [SerializeField] private Animator animator;
+
+
+    private bool isDead = false;
     public enum SpiderState {
         Supported, //on a valid surface (branch or silk)
         Spinning, //making silk
@@ -35,8 +41,16 @@ public class PlayerController : MonoBehaviour
         Dead,
     }
 
+    private void Awake()
+    {
+        state = SpiderState.Falling;
+        isDead = false;
+    }
+
     void Start() {
         //warnings
+        levelManager = GameObject.Find("Level Manager").GetComponent<LevelManager>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         if (webManager == null) {
             Debug.Log("Web Manager missing from Player Controller");
         }
@@ -71,6 +85,8 @@ public class PlayerController : MonoBehaviour
                 HandleDead();
                 break;
         }
+
+        animationFunction();
     }
 
     void HandleSupported() {
@@ -128,9 +144,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public void HandleDead() {
-        GameManager.instance.switchState(GameManager.GameState.pause);
-        levelManager.currentLevelState = LevelManager.LevelState.Lose;
-        levelManager.GameLose();
+        if (isDead == false)
+        {
+            GameManager.instance.switchState(GameManager.GameState.pause);
+            levelManager.GameLose();
+            isDead = true;
+        }
+        //levelManager.GameLose();
+        //GameManager.instance.switchState(GameManager.GameState.pause);
     }
 
     void MoveSpace() {
@@ -186,5 +207,26 @@ public class PlayerController : MonoBehaviour
         );
 
         return hit != null;
+    }
+
+    private void animationFunction()
+    {
+        if (Input.GetKey(KeyCode.Space) == true)
+        {
+            animator.SetFloat("Magnitude", 1);
+        }
+        else
+        {
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
+
+            Vector3 moveDirection = new Vector3(moveX, moveY, 0).normalized;
+
+            Vector3 newPos = transform.position + moveDirection * speed * Time.deltaTime;
+
+            //Animations below
+            float magnitude = (newPos - transform.position).magnitude / Time.deltaTime;
+            animator.SetFloat("Magnitude", magnitude);
+        }
     }
 }

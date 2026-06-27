@@ -46,13 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WebManager
   silkPrefab: {fileID: 1967815498440904769, guid: a9cc8d9ea50a2c24a8567140a744cd4c, type: 3}
   spinnerets: {fileID: 0}
-  silkTotal: 100
+  silkMeter: {fileID: 0}
+  maxSilk: 100
+  currentSilk: {fileID: 0}
   web: {fileID: 0}
   placedSilks: []
+  caughtBugs: 0
   branches:
     serializedVersion: 2
     m_Bits: 64
   silk:
     serializedVersion: 2
     m_Bits: 128
-  silkActive: 0
+  leaves:
+    serializedVersion: 2
+    m_Bits: 512

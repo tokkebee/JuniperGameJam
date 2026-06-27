@@ -43,8 +43,23 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        switchState(GameState.mainMenu);
-        previousState = currentGameState;
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            currentGameState = GameState.mainMenu;
+            switchState(GameState.mainMenu);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            currentGameState = GameState.levelSelect;
+            switchState(GameState.levelSelect);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex >= 3)
+        {
+            currentGameState = GameState.game;
+            switchState(GameState.game);
+        }
+
+            previousState = currentGameState;
     }
 
     public void levelComplete()
@@ -66,9 +81,11 @@ public class GameManager : MonoBehaviour
         {
             case GameState.mainMenu:
                 StartCoroutine(SoundManager.MusicTransition(SoundType.MenuMusic));
+                Time.timeScale = 1f;
                 break;
             case GameState.levelSelect:
                 StartCoroutine(SoundManager.MusicTransition(SoundType.MenuMusic));
+                Time.timeScale = 1f;
                 break;
             case GameState.game:
                 StartCoroutine(SoundManager.MusicTransition(SoundType.GameMusic));
@@ -99,8 +116,11 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        //PlayerDataScript data = SaveScript.Load(this);
-        //highestLevelUnlocked = data.level;
+        PlayerDataScript data = SaveScript.Load(this);
+        if (data != null)
+        {
+            highestLevelUnlocked = data.level;
+        }
     }
 
     public void WipeData()

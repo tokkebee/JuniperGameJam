@@ -79,11 +79,11 @@ public class SoundManager : MonoBehaviour
             {
                 if (instance.loopingAudioSource.clip != i.audioClip) //checks if its not already playing
                 {
-                    instance.loopingAudioSource.clip = i.audioClip;
                     instance.loopingAudioSource.volume = Mathf.Lerp(1, 0, instance.transitionTime);
-                    yield return new WaitForSeconds(instance.transitionTime);
-                    instance.loopingAudioSource.volume = Mathf.Lerp(0, 1, instance.transitionTime);
+                    yield return new WaitForSecondsRealtime(instance.transitionTime);
+                    instance.loopingAudioSource.clip = i.audioClip;
                     instance.loopingAudioSource.Play();
+                    instance.loopingAudioSource.volume = Mathf.Lerp(0, 1, instance.transitionTime);
                     yield break;
                 }
                 else 
