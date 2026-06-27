@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class WebManager : MonoBehaviour
 {
@@ -8,8 +8,20 @@ public class WebManager : MonoBehaviour
     [SerializeField] private GameObject silkPrefab;
     [SerializeField] private Transform spinnerets;
     [SerializeField] private Image silkMeter;
-    [SerializeField] private float silkTotal = 100f;
-    [SerializeField] private float supportRadius = 0.5f;
+    [SerializeField] private float maxSilk = 100f;
+
+    [Header("Active")]
+    [SerializeField] public GameObject currentSilk;
+    private LineRenderer lr;
+    private EdgeCollider2D ec;
+
+    private Vector3 startPoint;
+    private Vector3 currentPoint;
+
+    [SerializeField] private float silkRemaining;
+    [SerializeField] private float silkUsedThisLine;
+
+    private float supportRadius = 0.5f;
 
     [Header("Web")]
     [SerializeField] private GameObject web;
@@ -19,73 +31,114 @@ public class WebManager : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask branches;
     [SerializeField] private LayerMask silk;
-
-    [Header("Active")]
-    public GameObject currentSilk;
-    private LineRenderer lr;
-    private EdgeCollider2D ec;
     
-    [SerializeField] public bool silkActive = false;
-    private Vector3 startWorld;
+    public bool silkActive { get; private set; }
+
+    void Start() {
+        silkRemaining = maxSilk;
+        if (silkMeter != null) silkMeter.fillAmount = 1f;
+    }
 
     //instantiates line of silk
-    public void StartSilk() {
-        if (silkActive) return;
+    public bool StartSilk() {
+        if (silkActive || silkRemaining <= 0f) return false;
 
         currentSilk = Instantiate(silkPrefab, spinnerets.position, Quaternion.identity);
-        silkActive = true;
-
         lr = currentSilk.GetComponent<LineRenderer>();
         ec = currentSilk.GetComponent<EdgeCollider2D>();
+
+        silkActive = true;
+
+        startPoint = spinnerets.position;
+        currentPoint = startPoint;
+        //silkUsedThisLine = 0f;
 
         lr.positionCount = 2;
         lr.useWorldSpace = true;
         ec.edgeRadius = supportRadius;
 
-        startWorld = spinnerets.position;
-
-        lr.SetPosition(0, startWorld);
-        lr.SetPosition(1, startWorld);
+        lr.SetPosition(0, startPoint);
+        lr.SetPosition(1, startPoint);
 
         ec.SetPoints(new List<Vector2> {Vector2.zero, Vector2.zero}); //edge collider uses local space
+
+        return true;
     }
 
     //updates position of a silk's last vertex
     public void UpdateSilk() {
         if (!silkActive) return;
+        //if (silkRemaining <= 0f) return;
 
-        Vector3 endWorld = spinnerets.position;
+        currentPoint = spinnerets.position;
 
         //lr (world space)
-        lr.SetPosition(0, startWorld);
-        lr.SetPosition(lr.positionCount - 1, endWorld);
+        lr.SetPosition(0, startPoint);
+        lr.SetPosition(lr.positionCount - 1, currentPoint);
 
         //ec (local space)
-        Vector2 localStart = currentSilk.transform.InverseTransformPoint(startWorld);
-        Vector2 localEnd = currentSilk.transform.InverseTransformPoint(endWorld);
+        Vector2 localStart = currentSilk.transform.InverseTransformPoint(startPoint);
+        Vector2 localEnd = currentSilk.transform.InverseTransformPoint(currentPoint);
 
         ec.SetPoints(new List<Vector2> {
             localStart,
             localEnd
         });
+
+        silkUsedThisLine = Vector3.Distance(startPoint, currentPoint);
+        silkRemaining = Mathf.Clamp(maxSilk - silkUsedThisLine, 0f, maxSilk);
+
+        UpdateSilkMeter();
+
+        if (silkRemaining <= 0f) {
+            EndSilk(refund: true);
+        }
+
+        //UpdateSilkMeter();
     }
 
-    public void EndSilk() {
+    public void EndSilk(bool refund = false) {
         if (!silkActive) return;
 
         UpdateSilk();
 
-        if (ValidSilk()) {
-            silkTotal -= Vector3.Distance(startWorld, spinnerets.position);
-            currentSilk.transform.SetParent(web.transform, true);
-            placedSilks.Add(currentSilk);
+        if (refund) {
+            silkRemaining = Mathf.Clamp(silkRemaining + silkUsedThisLine, 0f, maxSilk);
         }
-        else {
-            //Debug.Log("Invalid silk placement!");
-            Destroy(currentSilk);
+
+        if (currentSilk != null) {
+            if (ValidSilk()) {
+                currentSilk.transform.SetParent(web.transform, true);
+                placedSilks.Add(currentSilk);
+            }
+            else {
+                //Debug.Log("Invalid silk placement!");
+                Destroy(currentSilk);
+            }
         }
         currentSilk = null;
         silkActive = false;
+        silkUsedThisLine = 0f;
+
+        UpdateSilkMeter();
+    }
+
+    public float GetSilkRemaining() => silkRemaining;
+
+    public void ConsumeSilk(float amount) {
+        if (!silkActive) return;
+        
+        //silkRemaining -= amount;
+        silkRemaining = Mathf.Max(0f, silkRemaining - amount);
+
+        if (silkMeter != null)
+            silkMeter.fillAmount = silkRemaining / maxSilk;
+    }
+
+    public void UpdateSilkMeter() {
+        if (silkMeter != null) {
+            silkMeter.fillAmount = silkRemaining / maxSilk;
+        }
     }
 
     public bool ValidSilk() {
@@ -103,9 +156,7 @@ public class WebManager : MonoBehaviour
             Vector3 a = lr.GetPosition(0);
             Vector3 b = lr.GetPosition(1);
 
-            Vector3 p = spinnerets.position;
-
-            float distance = DistancePointToSegment(p, a, b);
+            float distance = DistancePointToSegment(spinnerets.position, a, b);
 
             if (distance < supportRadius)
                 return true;

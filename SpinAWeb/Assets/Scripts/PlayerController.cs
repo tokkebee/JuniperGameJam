@@ -96,9 +96,7 @@ public class PlayerController : MonoBehaviour
     void HandleSupported() {
         MoveWASD();
         if (Input.GetKeyDown(KeyCode.Space)) {
-            webManager.StartSilk();
-            if (webManager.silkActive)
-            {
+            if (webManager.StartSilk()) {
                 state = SpiderState.Spinning;
             }
         }
@@ -117,18 +115,17 @@ public class PlayerController : MonoBehaviour
     }
 
     void HandleSpinning() {
+        //Vector3 oldPos = transform.position;
         MoveSpace();
-        SpinWeb();
+        //Vector3 newPos = transform.position;
+
+        webManager.UpdateSilk();
+        //webManager.UpdateSilk();
 
         if (Input.GetKeyUp(KeyCode.Space)) {
             webManager.EndSilk();
-            
-            if (IsSupported()) {
-                state = SpiderState.Supported;
-            }
-            else {
-                state = SpiderState.Falling;
-            }
+
+            state = IsSupported() ? SpiderState.Supported : SpiderState.Falling;
         }
     }
 
@@ -137,7 +134,6 @@ public class PlayerController : MonoBehaviour
 
         if (IsSupported()) {
             state = SpiderState.Supported;
-            Debug.Log("Supported");
             return;
         }
 
@@ -146,18 +142,35 @@ public class PlayerController : MonoBehaviour
         Vector3 bottom = camera.ScreenToWorldPoint(new Vector3(0, 0, depth));
 
         if (transform.position.y < bottom.y) {
-            Debug.Log("Died!");
             state = SpiderState.Dead;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
     void MoveSpace() {
-        Vector3 newPos = transform.position + transform.up * speed * Time.deltaTime;
+        // Vector3 newPos = transform.position + transform.up * speed * Time.deltaTime;
+
+        // ClampToScreen(ref newPos);
+
+        // transform.position = newPos;
+
+        float moveDistance = speed * Time.deltaTime;
+        //float maxMove = speed * Time.deltaTime;
+        //float moveDistance = Mathf.Min(maxMove, webManager.GetSilkRemaining());
+
+        Vector3 newPos = transform.position + transform.up * moveDistance;
 
         ClampToScreen(ref newPos);
-
         transform.position = newPos;
+
+        //webManager.ConsumeSilk(Vector3.Distance(oldPos, newPos));
+
+        // if (IsSupported()) {
+        //     state = SpiderState.Supported;
+        // }
+        // else {
+        //     state = SpiderState.Falling;
+        // }
     }
 
     void MoveWASD() {
