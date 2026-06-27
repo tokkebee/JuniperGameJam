@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1885974601681717538, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3426090976436595755, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_Name
       value: UI Manager
@@ -177,7 +181,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1888755970762477697, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2083957997}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
 --- !u!1001 &71991707
@@ -383,7 +390,6 @@ RectTransform:
   - {fileID: 701409979}
   - {fileID: 1070549978}
   - {fileID: 8794632048407890001}
-  - {fileID: 2083957997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1239,6 +1245,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &738525670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 65280017502633723, guid: 01acb3c2c7bcb9b4bbb7de3463f4cd85, type: 3}
+  m_PrefabInstance: {fileID: 738525664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3b5ab1a559b8f4989308ac39384ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &811172219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1519,9 @@ MonoBehaviour:
   active: 0
   bugCount: 0
   bugLimit: 10
+  webManager: {fileID: 71991708}
+  levelManager: {fileID: 1719673897}
+  playerController: {fileID: 738525670}
 --- !u!4 &1116211188
 Transform:
   m_ObjectHideFlags: 0

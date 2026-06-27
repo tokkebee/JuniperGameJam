@@ -45,8 +45,6 @@ public class UIManager : MonoBehaviour
 
     public void LevelSelect() {
         SoundManager.PlaySound(SoundType.UIPositive);
-
-        //SetPause(false); //Not used closePanel() because of audio cue conflict
         GameManager.instance.switchState(GameManager.GameState.levelSelect);
         StartCoroutine(LoadLevel("Level Select"));
         
@@ -57,8 +55,6 @@ public class UIManager : MonoBehaviour
         SoundManager.PlaySound(SoundType.UIPositive);
         GameManager.instance.switchState(GameManager.GameState.mainMenu);
         StartCoroutine(LoadLevel("Main Screen"));
-        
-        //SceneManager.LoadScene("Main Screen");
     }
 
     public void QuitToDesktop()
@@ -84,9 +80,10 @@ public class UIManager : MonoBehaviour
 
     public void replayLevel()
     {
+        SoundManager.PlaySound(SoundType.UIPositive);
         GameManager.instance.switchState(GameManager.GameState.game);
+
         StartCoroutine(LoadLevel($"{SceneManager.GetActiveScene().buildIndex - 2}_Level"));
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SetPause(bool paused) {
@@ -117,7 +114,7 @@ public class UIManager : MonoBehaviour
     public IEnumerator LoadLevel(string levelName) //Transition (Dont switch game states here as it is used for all load scenes.
     {
         transiton.SetTrigger("Exit");
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(levelName);
     }
 }

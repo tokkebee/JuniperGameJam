@@ -28,11 +28,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask silk;
     [SerializeField] private LayerMask leaves;
 
+
+    private bool isDead = false;
     public enum SpiderState {
         Supported, //on a valid surface (branch or silk)
         Spinning, //making silk
         Falling,
         Dead,
+    }
+
+    private void Awake()
+    {
+        state = SpiderState.Falling;
+        isDead = false;
     }
 
     void Start() {
@@ -130,9 +138,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void HandleDead() {
-        GameManager.instance.switchState(GameManager.GameState.pause);
-        levelManager.currentLevelState = LevelManager.LevelState.Lose;
-        levelManager.GameLose();
+        if (isDead == false)
+        {
+            GameManager.instance.switchState(GameManager.GameState.pause);
+            levelManager.GameLose();
+            isDead = true;
+        }
+        //levelManager.GameLose();
         //GameManager.instance.switchState(GameManager.GameState.pause);
     }
 

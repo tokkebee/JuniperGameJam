@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour {
 
     [Header("Win Conditions")]
     [SerializeField] public int bugsQuota = 5;
-    [SerializeField] public int bugsCaught;
+    [SerializeField] public int bugsCaught = 0;
 
     [Header("UI Elements")]
     [SerializeField] private GameObject gameLoseScreen;
@@ -18,6 +18,9 @@ public class LevelManager : MonoBehaviour {
 
     [Header("Dependants")]
     [SerializeField] private WebManager webManager;
+
+    private bool WinConHasEnded = false;
+    private bool LoseConHasEnded = false;
 
     public enum LevelState {
         Play,
@@ -39,12 +42,6 @@ public class LevelManager : MonoBehaviour {
                 break;
             
             case LevelState.Win:
-                if (GameManager.instance.highestLevelUnlocked == SceneManager.GetActiveScene().buildIndex - 2) //Hardcoded -2 because time constraint!!!!! although not game breaking... this basically runs 10000 times, same with saveGame()
-                {
-                    GameManager.instance.highestLevelUnlocked++;
-                }
-                GameManager.instance.SaveGame();
-
                 GameWin();
                 break;
 
@@ -74,15 +71,29 @@ public class LevelManager : MonoBehaviour {
             Time.timeScale = 0f;
         }
         */
-        currentLevelState = LevelState.Lose; //PlayerController is calling gamelose but never switches state so the if statement never runs
-        gameLoseScreen.SetActive(true);
-        Time.timeScale = 0f;
+        //currentLevelState = LevelState.Lose; //PlayerController is calling gamelose but never switches state so the if statement never runs
+        if (LoseConHasEnded == false)
+        {
+            gameLoseScreen.SetActive(true);
+            currentLevelState = LevelState.Lose;
+            //Time.timeScale = 0f;
+            LoseConHasEnded = true;
+        }
     }
 
     private void GameWin() {
         if (currentLevelState == LevelState.Win) {
             Time.timeScale = 0f;
             gameWinScreen.SetActive(true);
+        }
+        if (WinConHasEnded == false)
+        {
+            if (GameManager.instance.highestLevelUnlocked == SceneManager.GetActiveScene().buildIndex - 2) //Hardcoded -2 because time constraint
+            {
+                GameManager.instance.highestLevelUnlocked++;
+            }
+            GameManager.instance.SaveGame();
+            WinConHasEnded = true;
         }
     }
 

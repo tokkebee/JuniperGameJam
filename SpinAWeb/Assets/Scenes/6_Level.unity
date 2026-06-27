@@ -1313,6 +1313,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &738525668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 65280017502633723, guid: 01acb3c2c7bcb9b4bbb7de3463f4cd85, type: 3}
+  m_PrefabInstance: {fileID: 738525664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3b5ab1a559b8f4989308ac39384ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &811172219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1649,9 @@ MonoBehaviour:
   active: 0
   bugCount: 0
   bugLimit: 10
+  webManager: {fileID: 71991708}
+  levelManager: {fileID: 1719673897}
+  playerController: {fileID: 738525668}
 --- !u!4 &1116211188
 Transform:
   m_ObjectHideFlags: 0
