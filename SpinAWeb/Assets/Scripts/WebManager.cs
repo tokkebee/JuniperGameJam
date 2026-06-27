@@ -9,7 +9,6 @@ public class WebManager : MonoBehaviour
     [SerializeField] private Transform spinnerets;
     [SerializeField] private Image silkMeter;
     [SerializeField] private float maxSilk = 100f;
-    [SerializeField] private float worldUnitsPerSilk = 10f;
     private float silkConsumed = 0f;
     //[SerializeField] private float silkRemaining;
 
@@ -28,12 +27,10 @@ public class WebManager : MonoBehaviour
     [Header("Web")]
     [SerializeField] private GameObject web;
     [SerializeField] public List<GameObject> placedSilks = new();
-    public int caughtBugs; 
 
     [Header("Layers")]
     [SerializeField] private LayerMask branches;
     [SerializeField] private LayerMask silk;
-    
     public bool silkActive { get; private set; }
 
     void Start() {
@@ -115,8 +112,8 @@ public class WebManager : MonoBehaviour
             ? Vector3.Distance(startPoint, spinnerets.position)
             : 0f;
 
-        float totalUsed = (silkConsumed + currentLength) / worldUnitsPerSilk;
-        return Mathf.Clamp01(1f - totalUsed);
+        float totalUsed = silkConsumed + currentLength;
+        return Mathf.Clamp01(1f - (totalUsed / maxSilk));
     }
 
     public void UpdateSilkMeter() {

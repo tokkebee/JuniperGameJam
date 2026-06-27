@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ed825ccc4d28e0349af59f7d7071bb0a
+guid: 206e2d1dff50c614fa35f3f3101358ab
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2306720605616055850
-    second: InGame_Background_0
+      213: -1149340258757986363
+    second: ICON_antWhite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: InGame_Background_0
+      name: ICON_antWhite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3840
-        height: 2160
+        x: 984
+        y: 54
+        width: 1872
+        height: 2091
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d95e2aa4d1ecffd0800000000000000
-      internalID: -2306720605616055850
+      spriteID: 5c7bca6cf19bc00f0800000000000000
+      internalID: -1149340258757986363
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      InGame_Background_0: -2306720605616055850
+      ICON_antWhite_0: -1149340258757986363
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

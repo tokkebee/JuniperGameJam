@@ -12,8 +12,6 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : MonoBehaviour
 {
-    //public static UIManager instance { get; private set; }
-
     [Header("PauseUI")]
     [SerializeField] private GameObject pausePanel;
 
@@ -21,40 +19,11 @@ public class UIManager : MonoBehaviour
     public Animator transiton; //TRANS?!?!!
     private float transitionTime = .333f; //How long it takes for transition to cover screen
 
-    // private void Awake()
-    // {
-    //     if (instance != null && instance != this)
-    //     {
-    //         Destroy(gameObject);
-    //         return;
-    //     }
-
-    //     instance = this;
-
-    //     DontDestroyOnLoad(gameObject);
-
-    //     if (pausePanel != null) {
-    //         pausePanel.SetActive(false);
-    //     }
-    // }
-
     private void Awake() {
         if (pausePanel != null) {
             pausePanel.SetActive(false);
         }
     }
-
-    // void OnGUI()
-    // {
-    //     Event pressedKey = Event.current;
-    //     if (pressedKey.isKey)
-    //     {
-    //         if (Input.GetKeyDown(KeyCode.Escape)) {
-    //             TogglePanel();
-    //         }
-    //         //Debug.Log("Detected key code: " + pressedKey.keyCode);
-    //     }
-    // }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -107,34 +76,6 @@ public class UIManager : MonoBehaviour
 
         StartCoroutine(LoadLevel("Credits"));
     }
-
-    // public void TogglePanel()
-    // {
-    //     bool isPaused = pausePanel.activeSelf;
-
-    //     if (!isPaused) {
-    //         if (pausePanel.activeInHierarchy == false) {
-    //             pausePanel.SetActive(true);
-    //             GameManager.instance.switchState(GameManager.GameState.pause);
-    //             Time.timeScale = 0f;
-    //             SoundManager.PlaySound(SoundType.UIPositive);
-    //         }
-    //         else {
-    //             ClosePanel();
-    //         }
-    //     }
-    // }
-
-    // public void ClosePanel()
-    // {
-    //     if (pausePanel != null)
-    //     {
-    //         pausePanel.SetActive(false);
-    //         GameManager.instance.Unpause(GameManager.instance.previousState);
-    //         Time.timeScale = 1f;
-    //         SoundManager.PlaySound(SoundType.UINegative);
-    //     }
-    // }
 
     public void SetPause(bool paused) {
         pausePanel.SetActive(paused);

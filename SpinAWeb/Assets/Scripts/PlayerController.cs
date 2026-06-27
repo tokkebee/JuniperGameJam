@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dependants")]
     [SerializeField] private WebManager webManager;
+    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private GameManager gameManager;
 
     [Header("State")]
     [SerializeField] private SpiderState state;
@@ -37,12 +39,11 @@ public class PlayerController : MonoBehaviour
         if (webManager == null) {
             Debug.Log("Web Manager missing from Player Controller");
         }
+        if (levelManager == null) {
+            Debug.Log("Level Manager missing from Player Controller");
+        }
 
         mainCamera = Camera.main;
-        // screenBounds.y = mainCamera.orthographicSize;
-        // screenBounds.x = screenBounds.y * mainCamera.aspect;
-
-        // Debug.Log(screenBounds);
     }
 
     void Update() {
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case SpiderState.Dead:
+                HandleDead();
                 break;
         }
     }
@@ -110,8 +112,13 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y < bottom.y) {
             state = SpiderState.Dead;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    void HandleDead() {
+        GameManager.instance.switchState(GameManager.GameState.pause);
+        levelManager.GameLose();
     }
 
     void MoveSpace() {

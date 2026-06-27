@@ -9,7 +9,7 @@ public class BugSpawn : MonoBehaviour
     public GameObject smallBug, medBug, largeBug; 
     public bool active = false;
     public int bugCount = 0;
-    private int bugLimit = 5; 
+    [SerializeField] private int bugLimit = 20;
 
     void Start()
     {
