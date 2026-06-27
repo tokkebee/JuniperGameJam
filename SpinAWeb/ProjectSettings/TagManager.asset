@@ -8,6 +8,7 @@ TagManager:
   - Branch
   - Wall
   - KILL ZONE
+  - 'Boundary '
   layers:
   - Default
   - TransparentFX

@@ -103,12 +103,12 @@ TextureImporter:
       name: SAW_Logo_Vers2_0
       rect:
         serializedVersion: 2
-        x: 750
+        x: 12
         y: 32
-        width: 1664
-        height: 2086
+        width: 1689
+        height: 2088
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 29222b53b90308545a41a58b48dff960
     internalID: 0
     vertices: []
     indices: 
