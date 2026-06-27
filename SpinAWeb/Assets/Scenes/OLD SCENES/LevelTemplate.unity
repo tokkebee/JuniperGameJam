@@ -1483,6 +1483,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &738525668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 65280017502633723, guid: 01acb3c2c7bcb9b4bbb7de3463f4cd85, type: 3}
+  m_PrefabInstance: {fileID: 738525664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3b5ab1a559b8f4989308ac39384ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &811172219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,7 +1756,10 @@ MonoBehaviour:
   largeBug: {fileID: 5018495741151076171, guid: 3abc2fb365d3c994d90b1ba050e263b9, type: 3}
   active: 0
   bugCount: 0
-  bugLimit: 5
+  bugLimit: 10
+  webManager: {fileID: 71991708}
+  levelManager: {fileID: 1719673897}
+  playerController: {fileID: 738525668}
 --- !u!4 &1116211188
 Transform:
   m_ObjectHideFlags: 0
@@ -2405,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   currentLevelState: 0
-  bugsQuota: 10
+  bugsQuota: 5
   bugsCaught: 0
   gameLoseScreen: {fileID: 1070549977}
   gameWinScreen: {fileID: 1108877207079338370}
@@ -3234,7 +3248,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1088639891}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1179342765257515409, guid: fd6de6b041b258e48bb458e5df6e5acb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6de6b041b258e48bb458e5df6e5acb, type: 3}

@@ -52,7 +52,7 @@ public class Bug : MonoBehaviour
         if(currentBugState == bugState.free && Time.time - activationTime >= 5f)
         {
             Destroy(this.gameObject);
-            bs.bugCount--; 
+            //bs.bugCount--; 
         }
     }
 
@@ -77,7 +77,7 @@ public class Bug : MonoBehaviour
     {
         currentBugState = bugState.caught;
         moveSpeed = 0.0f;
-        //wm.caughtBugs++;
+        wm.caughtBugs++;
         levelManager.AddScore(bugSO.pointsValue);
     }
 

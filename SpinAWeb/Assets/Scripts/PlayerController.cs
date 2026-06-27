@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void HandleDead() {
+    public void HandleDead() {
         GameManager.instance.switchState(GameManager.GameState.pause);
         levelManager.currentLevelState = LevelManager.LevelState.Lose;
         levelManager.GameLose();

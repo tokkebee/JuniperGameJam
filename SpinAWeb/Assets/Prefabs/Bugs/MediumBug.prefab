@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2764237038998003696}
   m_Layer: 0
   m_Name: MediumBug
-  m_TagString: Untagged
+  m_TagString: Bug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.90744376, g: 0.3226415, b: 1, a: 0}
@@ -112,9 +112,11 @@ MonoBehaviour:
   bugSO: {fileID: 11400000, guid: 030d2680f13236b4996661492c5eef0b, type: 2}
   bs: {fileID: 0}
   wm: {fileID: 0}
+  levelManager: {fileID: 0}
   activationTime: 0
   bugRig: {fileID: 2368295360117827872}
   sr: {fileID: 0}
+  webcolor: {r: 0, g: 0, b: 0, a: 0}
   currentBugState: 0
 --- !u!58 &-1717787676616155551
 CircleCollider2D:

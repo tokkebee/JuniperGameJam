@@ -23,7 +23,6 @@ public class LevelManager : MonoBehaviour {
         Win,
         Lose
     }
-
     void Start() {
         UpdateBugQuota();
     }
