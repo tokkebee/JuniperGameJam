@@ -18,7 +18,8 @@ public class LevelSelectScript : MonoBehaviour {
 
     private void Start()
     {
-        highestUnlocked = PlayerPrefs.GetInt("HighestLevelUnlocked", 1);
+        //highestUnlocked = PlayerPrefs.GetInt("HighestLevelUnlocked", 1); //For some reason GetInt() wasnt getting the correct number so it defaulted to 1 (seen below)
+        highestUnlocked = GameManager.instance.highestLevelUnlocked;
         IdentifyButtons();
     }
 
@@ -33,7 +34,7 @@ public class LevelSelectScript : MonoBehaviour {
             SoundManager.PlaySound(SoundType.UIPositive);
             Debug.Log($"uiManager = {uiManager}");
             Debug.Log($"Level index = {index}, scene = {levelScenes[index]}");
-            StartCoroutine(uiManager.LoadLevel(levelScenes[index]));
+            StartCoroutine(uiManager.LoadLevel($"{levelScenes[index]}"));
 
             GameManager.instance.switchState(GameManager.GameState.game); //Enter game Gamestate
             //SceneManager.LoadScene(levelNumber + numScenesBeforeLevelSelect);
@@ -59,7 +60,7 @@ public class LevelSelectScript : MonoBehaviour {
 
             Color tempColor = image.color;
 
-            tempColor.a = (i < highestUnlocked) ? 1f : lockedLevelAlpha;
+            tempColor.a = (i < GameManager.instance.highestLevelUnlocked) ? 1f : lockedLevelAlpha;
             image.color = tempColor;
         }
     }

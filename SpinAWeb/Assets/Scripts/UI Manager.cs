@@ -101,6 +101,13 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void Credits()
+    {
+        SoundManager.PlaySound(SoundType.UIPositive);
+
+        StartCoroutine(LoadLevel("Credits"));
+    }
+
     // public void TogglePanel()
     // {
     //     bool isPaused = pausePanel.activeSelf;

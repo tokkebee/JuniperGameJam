@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7f3c3e07116a3cf4a9cd847e461dc9ea
+guid: 6642055709d8d4e48ba650add36c8a4f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8831861684111033999
-    second: SAW_Logo_Vers2_0
+      213: 7647240639167449756
+    second: Leaf_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SAW_Logo_Vers2_0
+      name: Leaf_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 32
-        width: 1689
-        height: 2088
+        x: 1373
+        y: 0
+        width: 1094
+        height: 2160
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f8642d29863119a70800000000000000
-      internalID: 8831861684111033999
+      spriteID: c9ac18138d4702a60800000000000000
+      internalID: 7647240639167449756
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 29222b53b90308545a41a58b48dff960
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SAW_Logo_Vers2_0: 8831861684111033999
+      Leaf_0: 7647240639167449756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
