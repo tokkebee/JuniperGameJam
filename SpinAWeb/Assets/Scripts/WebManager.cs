@@ -6,7 +6,7 @@ public class WebManager : MonoBehaviour
 {
     [Header("Silk")]
     [SerializeField] private GameObject silkPrefab;
-    [SerializeField] private Transform spinnerets;
+    [SerializeField] public Transform spinnerets;
     [SerializeField] private Image silkMeter;
     [SerializeField] private float maxSilk = 100f;
     private float silkConsumed = 0f;
@@ -27,10 +27,12 @@ public class WebManager : MonoBehaviour
     [Header("Web")]
     [SerializeField] private GameObject web;
     [SerializeField] public List<GameObject> placedSilks = new();
+    public int caughtBugs;
 
     [Header("Layers")]
     [SerializeField] private LayerMask branches;
     [SerializeField] private LayerMask silk;
+    [SerializeField] private LayerMask leaves;
     public bool silkActive { get; private set; }
 
     void Start() {
@@ -41,7 +43,7 @@ public class WebManager : MonoBehaviour
 //silk creation
     //instantiates line of silk
     public bool StartSilk() {
-        if (silkActive || GetSilkRemaining() <= 0f) return false;
+        if (silkActive || GetSilkRemaining() <= 0f || !ValidSilk()) return false;
 
         currentSilk = Instantiate(silkPrefab, spinnerets.position, Quaternion.identity);
         lr = currentSilk.GetComponent<LineRenderer>();
@@ -92,7 +94,10 @@ public class WebManager : MonoBehaviour
         UpdateSilk();
 
         if (currentSilk != null) {
-            if (ValidSilk()) {
+            if (refund) {
+                Destroy(currentSilk);
+            }
+            else if (ValidSilk()) {
                 silkConsumed += Vector3.Distance(startPoint, spinnerets.position);
                 currentSilk.transform.SetParent(web.transform, true);
                 placedSilks.Add(currentSilk);
@@ -122,8 +127,12 @@ public class WebManager : MonoBehaviour
         }
     }
 
+    public bool SpinneretsOverLeaves(LayerMask leaves) {
+        return Physics2D.OverlapCircle(spinnerets.position, supportRadius, leaves);
+    }
+
     public bool ValidSilk() {
-        LayerMask supportLayers = branches | silk;
+        LayerMask anchorableLayers = branches | silk;
 
         if (Physics2D.OverlapCircle(spinnerets.position, supportRadius, branches))
             return true;

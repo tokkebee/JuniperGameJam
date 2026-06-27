@@ -10,12 +10,15 @@ public class BugSpawn : MonoBehaviour
     public bool active = false;
     public int bugCount = 0;
     [SerializeField] private int bugLimit = 20;
+    [SerializeField] private WebManager webManager;
+    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private PlayerController playerController;
 
     void Start()
     {
         active = true;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>(); 
-        StartCoroutine(BugDrop()); 
+        StartCoroutine(BugDrop());
     }
 
     void SpawnBug()
@@ -44,18 +47,34 @@ public class BugSpawn : MonoBehaviour
 
     IEnumerator BugDrop()
     {
-        while (active)
-        {
-            if (bugCount < bugLimit)
-            {
-                SpawnBug();
-                bugCount++; 
-                yield return new WaitForSeconds(3);
-            }
-            else
-            {
-                yield return null; 
-            }
+        // while (active)
+        // {
+        //     if (bugCount < bugLimit)
+        //     {
+        //         SpawnBug();
+        //         bugCount++; 
+        //         yield return new WaitForSeconds(3);
+        //     }
+        //     else
+        //     {
+        //         playerController.HandleDead();
+        //         yield return null; 
+        //     }
+        // }
+
+        while (bugCount < bugLimit) {
+            SpawnBug();
+            bugCount++;
+            yield return new WaitForSeconds(3);
+        }
+
+        while (GameObject.FindGameObjectsWithTag("Bug").Length > 0) {
+            yield return null;
+        }
+
+
+        if (webManager.caughtBugs < levelManager.bugsQuota) {
+            playerController.HandleDead();
         }
     }
 }

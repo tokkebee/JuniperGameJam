@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - KILL ZONE
   - 'Boundary '
+  - Bug
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Branches
   - Silk
   - Spider
-  - 
+  - Leaves
   - 
   - 
   - 

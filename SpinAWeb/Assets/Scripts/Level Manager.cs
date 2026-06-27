@@ -24,7 +24,6 @@ public class LevelManager : MonoBehaviour {
         Win,
         Lose
     }
-
     void Start() {
         UpdateBugQuota();
         Time.timeScale = 1f; //bug fix, when going into next round, time would be paused

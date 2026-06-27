@@ -52,11 +52,11 @@ public class Bug : MonoBehaviour
         if(currentBugState == bugState.free && Time.time - activationTime >= 10f)
         {
             Destroy(this.gameObject);
-            bs.bugCount--; 
+            //bs.bugCount--; 
         }
     }
 
-    void OnTriggerEnter2D(Collider2D  other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 7 && other.gameObject != wm.currentSilk)
         {
@@ -77,7 +77,7 @@ public class Bug : MonoBehaviour
     {
         currentBugState = bugState.caught;
         moveSpeed = 0.0f;
-        //wm.caughtBugs++;
+        wm.caughtBugs++;
         levelManager.AddScore(bugSO.pointsValue);
     }
 

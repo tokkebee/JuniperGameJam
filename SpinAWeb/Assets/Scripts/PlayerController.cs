@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float supportRadius = 0.5f;
 
     [SerializeField] private LayerMask branches;
-     [SerializeField] private LayerMask silk;
+    [SerializeField] private LayerMask silk;
+    [SerializeField] private LayerMask leaves;
 
     public enum SpiderState {
         Supported, //on a valid surface (branch or silk)
@@ -90,12 +91,22 @@ public class PlayerController : MonoBehaviour
 
     void HandleSpinning() {
         MoveSpace();
-
         webManager.UpdateSilk();
 
+        //bool overLeaf = ((1 << Physics2D.OverlapCircle(webManager.spinnerets.position, supportRadius, leaves)?.gameObject.layer ?? -1) & leaves) != 0;
+
+        // if (Input.GetKeyUp(KeyCode.Space) || webManager.GetSilkRemaining() <= 0f || webManager.SpinneretsOverLeaves(leaves)) {
+        //     webManager.EndSilk();
+        //     state = IsSupported() ? SpiderState.Supported : SpiderState.Falling;
+        // }
+
+        if (webManager.SpinneretsOverLeaves(leaves)) {
+            webManager.EndSilk(refund: true);
+            state = IsSupported() ? SpiderState.Supported : SpiderState.Falling;
+            return;
+        }
         if (Input.GetKeyUp(KeyCode.Space) || webManager.GetSilkRemaining() <= 0f) {
             webManager.EndSilk();
-
             state = IsSupported() ? SpiderState.Supported : SpiderState.Falling;
         }
     }
@@ -118,7 +129,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void HandleDead() {
+    public void HandleDead() {
+        GameManager.instance.switchState(GameManager.GameState.pause);
+        levelManager.currentLevelState = LevelManager.LevelState.Lose;
         levelManager.GameLose();
         //GameManager.instance.switchState(GameManager.GameState.pause);
     }
@@ -167,12 +180,12 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("Support Check not assigned!");
             return false;
         }
-        LayerMask supportLayers = branches | silk;
+        LayerMask standableLayers  = branches | silk | leaves;
 
         Collider2D hit = Physics2D.OverlapCircle(
             supportCheck.position,
             supportRadius,
-            supportLayers
+            standableLayers
         );
 
         return hit != null;
