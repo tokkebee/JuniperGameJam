@@ -47,7 +47,7 @@ MonoBehaviour:
   silkPrefab: {fileID: 1967815498440904769, guid: a9cc8d9ea50a2c24a8567140a744cd4c, type: 3}
   spinnerets: {fileID: 0}
   silkMeter: {fileID: 0}
-  maxSilk: 100
+  maxSilk: 25
   currentSilk: {fileID: 0}
   web: {fileID: 0}
   placedSilks: []

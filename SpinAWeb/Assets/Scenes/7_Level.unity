@@ -256,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 896288720}
     - target: {fileID: 3478837078933583840, guid: 62d350fd65c242143963a78301bd6522, type: 3}
       propertyPath: maxSilk
-      value: 35
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3478837078933583840, guid: 62d350fd65c242143963a78301bd6522, type: 3}
       propertyPath: silkMeter

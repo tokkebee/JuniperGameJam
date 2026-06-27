@@ -1681,6 +1681,9 @@ MonoBehaviour:
   active: 0
   bugCount: 0
   bugLimit: 5
+  webManager: {fileID: 0}
+  levelManager: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!4 &1116211188
 Transform:
   m_ObjectHideFlags: 0
