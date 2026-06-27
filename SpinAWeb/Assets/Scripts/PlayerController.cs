@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Camera")]
-    [SerializeField] public Camera camera;
+    [SerializeField] public Camera mainCamera;
     [SerializeField] private Vector2 screenBounds;
 
     [Header("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float fallSpeed;
-    [SerializeField] private Vector3 moveDirection;
 
     [Header("Dependants")]
     [SerializeField] private WebManager webManager;
@@ -39,12 +38,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Web Manager missing from Player Controller");
         }
 
-        camera = Camera.main;
-        //screenBounds = camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        screenBounds.y = camera.orthographicSize;
-        screenBounds.x = screenBounds.y * camera.aspect;
+        mainCamera = Camera.main;
+        // screenBounds.y = mainCamera.orthographicSize;
+        // screenBounds.x = screenBounds.y * mainCamera.aspect;
 
-        Debug.Log(screenBounds);
+        // Debug.Log(screenBounds);
     }
 
     void Update() {
@@ -72,27 +70,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // void UpdateState() {
-    //     if (IsSupported())
-    //     {
-    //         if (state != SpiderState.Supported)
-    //         {
-    //             Debug.Log("Supported");
-    //         }
-
-    //         state = SpiderState.Supported;
-    //     }
-    //     else
-    //     {
-    //         if (state != SpiderState.Falling)
-    //         {
-    //             Debug.Log("Falling");
-    //         }
-
-    //         state = SpiderState.Falling;
-    //     }
-    // }
-
     void HandleSupported() {
         MoveWASD();
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -102,25 +79,15 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!IsSupported()) {
-                state = SpiderState.Falling;
-                return;
-            }
-        // if (Input.GetKey(KeyCode.Space) && webManager.silkActive) {
-        //     MoveSpace();
-        //     SpinWeb();
-        // }
-        // if (Input.GetKeyUp(KeyCode.Space) && webManager.silkActive) {
-        //     webManager.EndSilk();
-        // }
+            state = SpiderState.Falling;
+            return;
+        }
     }
 
     void HandleSpinning() {
-        //Vector3 oldPos = transform.position;
         MoveSpace();
-        //Vector3 newPos = transform.position;
 
         webManager.UpdateSilk();
-        //webManager.UpdateSilk();
 
         if (Input.GetKeyUp(KeyCode.Space) || webManager.GetSilkRemaining() <= 0f) {
             webManager.EndSilk();
@@ -137,9 +104,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float depth = transform.position.z - camera.transform.position.z;
+        float depth = transform.position.z - mainCamera.transform.position.z;
 
-        Vector3 bottom = camera.ScreenToWorldPoint(new Vector3(0, 0, depth));
+        Vector3 bottom = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, depth));
 
         if (transform.position.y < bottom.y) {
             state = SpiderState.Dead;
@@ -148,36 +115,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void MoveSpace() {
-        // Vector3 newPos = transform.position + transform.up * speed * Time.deltaTime;
-
-        // ClampToScreen(ref newPos);
-
-        // transform.position = newPos;
-
         float moveDistance = speed * Time.deltaTime;
-        //float maxMove = speed * Time.deltaTime;
-        //float moveDistance = Mathf.Min(maxMove, webManager.GetSilkRemaining());
 
         Vector3 newPos = transform.position + transform.up * moveDistance;
 
         ClampToScreen(ref newPos);
         transform.position = newPos;
-
-        //webManager.ConsumeSilk(Vector3.Distance(oldPos, newPos));
-
-        // if (IsSupported()) {
-        //     state = SpiderState.Supported;
-        // }
-        // else {
-        //     state = SpiderState.Falling;
-        // }
     }
 
     void MoveWASD() {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector3(moveX, moveY, 0).normalized;
+        Vector3 moveDirection = new Vector3(moveX, moveY, 0).normalized;
 
         Vector3 newPos = transform.position + moveDirection * speed * Time.deltaTime;
 
@@ -188,23 +138,18 @@ public class PlayerController : MonoBehaviour
 
     void ClampToScreen(ref Vector3 position) { 
         //ref is a copy of the original that updates the og if changed
-        float depth = transform.position.z - camera.transform.position.z;
+        float depth = transform.position.z - mainCamera.transform.position.z;
         
-        Vector3 min = camera.ScreenToWorldPoint(
+        Vector3 min = mainCamera.ScreenToWorldPoint(
             new Vector3(0, 0, depth)
         );
 
-        Vector3 max = camera.ScreenToWorldPoint(
+        Vector3 max = mainCamera.ScreenToWorldPoint(
             new Vector3(Screen.width, Screen.height, depth)
         );
 
         position.x = Mathf.Clamp(position.x, min.x, max.x);
         position.y = Mathf.Clamp(position.y, min.y, max.y);
-    }
-
-    //Deposits web
-    void SpinWeb() {
-        webManager.UpdateSilk();
     }
 
     //state stuff

@@ -1050,6 +1050,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1143719572}
     - target: {fileID: 65280017502633723, guid: 01acb3c2c7bcb9b4bbb7de3463f4cd85, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1143719572}
+    - target: {fileID: 65280017502633723, guid: 01acb3c2c7bcb9b4bbb7de3463f4cd85, type: 3}
       propertyPath: webManager
       value: 
       objectReference: {fileID: 71991708}
@@ -1515,6 +1519,7 @@ MonoBehaviour:
   medBug: {fileID: 5074743176747100441, guid: adf5ec96fc7fe4a47b9276e0eb9daf96, type: 3}
   largeBug: {fileID: 5018495741151076171, guid: 3abc2fb365d3c994d90b1ba050e263b9, type: 3}
   active: 0
+  bugCount: 0
 --- !u!4 &1116211188
 Transform:
   m_ObjectHideFlags: 0

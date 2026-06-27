@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class LookAt : MonoBehaviour
 {
-    private Camera camera;
+    [SerializeField] private Camera mainCamera;
 
-    void Start()
-    {
-        camera = GetComponent<PlayerController>().camera;
-    }
+    // void Start()
+    // {
+    //     mainCamera = GetComponent<PlayerController>().GetComponent<Camera>();
+    // }
 
     void Update()
     {
         if (GameManager.instance.getCurrentGameState() == GameManager.GameState.pause)
             return;
             
-        Vector3 mousePos = camera.ScreenToWorldPoint(
+        Vector3 mousePos = mainCamera.ScreenToWorldPoint(
             new Vector3(
                 Input.mousePosition.x,
                 Input.mousePosition.y,
-                -camera.transform.position.z
+                -mainCamera.transform.position.z
             )
         );
         float angleRad = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x);
