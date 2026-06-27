@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: SpinAWeb
-  defaultCursor: {fileID: 2800000, guid: 878b68dedf195a24ebfb84f97eb06d12, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 8e3f24d30b7882940bc05da678f9bb30, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
