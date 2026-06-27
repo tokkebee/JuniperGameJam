@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
 
     [Header("TransitionUI")]
     public Animator transiton; //TRANS?!?!!
-    private float transitionTime = .333f; //How long it takes for transition to cover screen
+    private float transitionTime = .5f; //How long it takes for transition to cover screen
 
     private void Awake() {
         if (pausePanel != null) {
@@ -46,20 +46,18 @@ public class UIManager : MonoBehaviour
     public void LevelSelect() {
         SoundManager.PlaySound(SoundType.UIPositive);
 
-        SetPause(false); //Not used closePanel() because of audio cue conflict
-
-        StartCoroutine(LoadLevel("Level Select"));
+        //SetPause(false); //Not used closePanel() because of audio cue conflict
         GameManager.instance.switchState(GameManager.GameState.levelSelect);
+        StartCoroutine(LoadLevel("Level Select"));
+        
     }
 
     public void QuitToTitle()
     {
-        SoundManager.PlaySound(SoundType.UINegative);
-
-        if (pausePanel != null) pausePanel.SetActive(false); //Not used closePanel() because of audio cue conflict
-
-        StartCoroutine(LoadLevel("Main Screen"));
+        SoundManager.PlaySound(SoundType.UIPositive);
         GameManager.instance.switchState(GameManager.GameState.mainMenu);
+        StartCoroutine(LoadLevel("Main Screen"));
+        
         //SceneManager.LoadScene("Main Screen");
     }
 
@@ -75,6 +73,20 @@ public class UIManager : MonoBehaviour
         SoundManager.PlaySound(SoundType.UIPositive);
 
         StartCoroutine(LoadLevel("Credits"));
+    }
+
+    public void nextLevel()
+    {
+        SoundManager.PlaySound(SoundType.UIPositive);
+
+        StartCoroutine(LoadLevel($"{SceneManager.GetActiveScene().buildIndex - 1}_Level"));
+    }
+
+    public void replayLevel()
+    {
+        GameManager.instance.switchState(GameManager.GameState.game);
+        StartCoroutine(LoadLevel($"{SceneManager.GetActiveScene().buildIndex - 2}_Level"));
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SetPause(bool paused) {
@@ -104,12 +116,8 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator LoadLevel(string levelName) //Transition (Dont switch game states here as it is used for all load scenes.
     {
-        transiton.SetTrigger("Start");
-        yield return new WaitForSecondsRealtime(transitionTime);
-
-        SceneManager.LoadScene(levelName);
         transiton.SetTrigger("Exit");
-
-        yield return new WaitForSecondsRealtime(transitionTime);
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelName);
     }
 }

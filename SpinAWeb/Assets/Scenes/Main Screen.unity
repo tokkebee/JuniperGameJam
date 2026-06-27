@@ -423,14 +423,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2178546476737447356, guid: f998830021b894c48a90ad86085760e5, type: 3}
-      propertyPath: musicGroup
-      value: 
-      objectReference: {fileID: -9153833727628381767, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
-    - target: {fileID: 2178546476737447356, guid: f998830021b894c48a90ad86085760e5, type: 3}
-      propertyPath: musicReverbGroup
-      value: 
-      objectReference: {fileID: 9171310218753817529, guid: efd57b00c8f7d1144871797490683f3c, type: 2}
     - target: {fileID: 3538882491844095578, guid: f998830021b894c48a90ad86085760e5, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -586,14 +578,30 @@ PrefabInstance:
       propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1932786248546028723, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3426090976436595755, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_Name
       value: UI Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3778899346190150769, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2278.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778899346190150769, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2278.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778899346190150769, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2278.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778899346190150769, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848693986365764024, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: transiton
+      value: 
+      objectReference: {fileID: 525689193}
     - target: {fileID: 4323452508120728247, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -638,12 +646,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7835224984211283653, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6255966089930933012, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9017620018464183234, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 525689193}
   m_SourcePrefab: {fileID: 100100000, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+--- !u!1 &525689192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9017620018464183234, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
+  m_PrefabInstance: {fileID: 525689191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &525689193
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525689192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 74939ba4d9cb82c44985a6b8c0858935, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &906808540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1283,7 @@ GameObject:
   - component: {fileID: 2005342959}
   - component: {fileID: 2005342960}
   m_Layer: 5
-  m_Name: Start Game
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

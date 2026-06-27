@@ -125,7 +125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -9}
+  m_AnchoredPosition: {x: 0, y: 14}
   m_SizeDelta: {x: 604.5762, y: 312.6196}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8874737692309196846
@@ -164,7 +164,12 @@ MonoBehaviour:
     - Pause Game
 
 
-    Catch oncoming bugs in your webs and don''t fall down!'
+    Catch oncoming bugs in your webs and don''t fall down!
+
+
+    Peak
+    bug time is few and far between, so you gotta finish spinning your web before
+    it ends!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
   m_sharedMaterial: {fileID: 8665513947000456993, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
@@ -191,8 +196,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

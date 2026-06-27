@@ -49,7 +49,7 @@ public class Bug : MonoBehaviour
     {
         transform.Translate(moveDir * moveSpeed * Time.deltaTime, Space.World);
 
-        if(currentBugState == bugState.free && Time.time - activationTime >= 5f)
+        if(currentBugState == bugState.free && Time.time - activationTime >= 10f)
         {
             Destroy(this.gameObject);
             bs.bugCount--; 
@@ -85,7 +85,7 @@ public class Bug : MonoBehaviour
     {
         int diceroll = Random.Range(0, 4);
 
-        moveDir = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
+        moveDir = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,.25f));
     }
 
     IEnumerator Lifespan()

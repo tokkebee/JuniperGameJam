@@ -2514,10 +2514,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 3848693986365764024, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
-      propertyPath: transiton
-      value: 
-      objectReference: {fileID: 1951812136}
     - target: {fileID: 4323452508120728247, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2827,11 +2823,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895684839}
   m_CullTransparentMesh: 1
---- !u!95 &1951812136 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4459612067817686935, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
-  m_PrefabInstance: {fileID: 1869801679}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2026055204
 GameObject:
   m_ObjectHideFlags: 0

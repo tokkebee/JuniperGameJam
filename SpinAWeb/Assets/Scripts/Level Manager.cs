@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 // this script handles the game's operations per level.
 public class LevelManager : MonoBehaviour {
@@ -26,6 +27,7 @@ public class LevelManager : MonoBehaviour {
 
     void Start() {
         UpdateBugQuota();
+        Time.timeScale = 1f; //bug fix, when going into next round, time would be paused
     }
 
     void Update() {
@@ -38,6 +40,12 @@ public class LevelManager : MonoBehaviour {
                 break;
             
             case LevelState.Win:
+                if (GameManager.instance.highestLevelUnlocked == SceneManager.GetActiveScene().buildIndex - 2) //Hardcoded -2 because time constraint!!!!! although not game breaking... this basically runs 10000 times, same with saveGame()
+                {
+                    GameManager.instance.highestLevelUnlocked++;
+                }
+                GameManager.instance.SaveGame();
+
                 GameWin();
                 break;
 
@@ -54,17 +62,22 @@ public class LevelManager : MonoBehaviour {
 
     private void GamePlay() {
         if (currentLevelState == LevelState.Play) {
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f; //Commented out. Made it so that pausing wouldnt work while in play state
             gameLoseScreen.SetActive(false);
             gameWinScreen.SetActive(false);
         }
     }
 
     public void GameLose() {
+        /*
         if (currentLevelState == LevelState.Lose) {
-            Time.timeScale = 0f;
             gameLoseScreen.SetActive(true);
+            Time.timeScale = 0f;
         }
+        */
+        currentLevelState = LevelState.Lose; //PlayerController is calling gamelose but never switches state so the if statement never runs
+        gameLoseScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     private void GameWin() {

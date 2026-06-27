@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     void Start() {
         //warnings
+        levelManager = GameObject.Find("Level Manager").GetComponent<LevelManager>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         if (webManager == null) {
             Debug.Log("Web Manager missing from Player Controller");
         }
@@ -117,8 +119,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void HandleDead() {
-        GameManager.instance.switchState(GameManager.GameState.pause);
         levelManager.GameLose();
+        //GameManager.instance.switchState(GameManager.GameState.pause);
     }
 
     void MoveSpace() {

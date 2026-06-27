@@ -3606,6 +3606,21 @@ MonoBehaviour:
   - 2_Level
   - 3_Level
   - 4_Level
+  - 5_Level
+  - 6_Level
+  - 7_Level
+  - 8_Level
+  - 9_Level
+  - 10_Level
+  - 11_Level
+  - 11_Level
+  - 12_Level
+  - 13_Level
+  - 14_Level
+  - 15_Level
+  - 16_Level
+  - 17_Level
+  - 18_Level
   LevelsGameObject: {fileID: 91246638}
   levelFont: {fileID: 11400000, guid: a311a5e5e57b6054dbaf1d22e7ac40a5, type: 2}
   lockedLevelAlpha: 0.2
@@ -3961,6 +3976,10 @@ PrefabInstance:
     - target: {fileID: 2159102725903366414, guid: 10b532ba9c472fe448499f321d52068b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298903421093933040, guid: 10b532ba9c472fe448499f321d52068b, type: 3}
+      propertyPath: highestLevelUnlocked
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5821,10 +5840,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 3848693986365764024, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
-      propertyPath: transiton
-      value: 
-      objectReference: {fileID: 1951812136}
     - target: {fileID: 4323452508120728247, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6271,11 +6286,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943889292}
   m_CullTransparentMesh: 1
---- !u!95 &1951812136 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4459612067817686935, guid: a58862eeef86b5a44be96d77fb942abc, type: 3}
-  m_PrefabInstance: {fileID: 1869801679}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1965039524
 GameObject:
   m_ObjectHideFlags: 0

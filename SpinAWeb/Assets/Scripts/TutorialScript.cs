@@ -1,15 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class TutorialScript : MonoBehaviour
 {
-    void Start()
+    IEnumerator Start()
     {
-        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(.5f);
+        Time.timeScale = 0;
     }
 
     public void tutorialUnpause()
-    { 
-        Time.timeScale = 0;
+    {
+        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 }
