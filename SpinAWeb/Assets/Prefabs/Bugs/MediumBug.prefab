@@ -108,8 +108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bug
   moveSpeed: 5
-  bugSO: {fileID: 0}
+  moveDir: {x: 0, y: 0}
+  bugSO: {fileID: 11400000, guid: 030d2680f13236b4996661492c5eef0b, type: 2}
+  bs: {fileID: 0}
   wm: {fileID: 0}
+  activationTime: 0
+  bugRig: {fileID: 2368295360117827872}
+  sr: {fileID: 0}
   currentBugState: 0
 --- !u!58 &-1717787676616155551
 CircleCollider2D:

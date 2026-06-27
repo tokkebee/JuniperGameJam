@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 public class WebManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class WebManager : MonoBehaviour
     [SerializeField] private LayerMask silk;
 
     [Header("Active")]
-    private GameObject currentSilk;
+    public GameObject currentSilk;
     private LineRenderer lr;
     private EdgeCollider2D ec;
     

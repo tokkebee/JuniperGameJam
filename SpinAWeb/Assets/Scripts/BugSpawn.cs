@@ -6,10 +6,10 @@ public class BugSpawn : MonoBehaviour
     [SerializeField] Camera cam;
     public Vector3 camSpace;
 
-    private float spawnY = 1.0f;
-
     public GameObject smallBug, medBug, largeBug; 
     public bool active = false;
+    public int bugCount = 0;
+    private int bugLimit = 5; 
 
     void Start()
     {
@@ -21,8 +21,9 @@ public class BugSpawn : MonoBehaviour
     void SpawnBug()
     {
         float spawnX = Random.Range(0.10f, 0.90f);
+        float spawnY = Random.Range(1.0f, 0.9f);
 
-        Vector3 spawnPos = new Vector3(spawnX, spawnY + 1.0f, cam.nearClipPlane);
+        Vector3 spawnPos = new Vector3(spawnX, spawnY, cam.nearClipPlane);
         spawnPos = cam.ViewportToWorldPoint(spawnPos);
 
         int diceroll = Random.Range(0, 3);
@@ -45,8 +46,16 @@ public class BugSpawn : MonoBehaviour
     {
         while (active)
         {
-            SpawnBug();
-            yield return new WaitForSeconds(3);
+            if (bugCount < bugLimit)
+            {
+                SpawnBug();
+                bugCount++; 
+                yield return new WaitForSeconds(3);
+            }
+            else
+            {
+                yield return null; 
+            }
         }
     }
 }
