@@ -116,8 +116,11 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        //PlayerDataScript data = SaveScript.Load(this);
-        //highestLevelUnlocked = data.level;
+        PlayerDataScript data = SaveScript.Load(this);
+        if (data != null)
+        {
+            highestLevelUnlocked = data.level;
+        }
     }
 
     public void WipeData()
