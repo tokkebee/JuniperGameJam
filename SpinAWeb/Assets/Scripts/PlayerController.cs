@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         webManager.UpdateSilk();
         //webManager.UpdateSilk();
 
-        if (Input.GetKeyUp(KeyCode.Space)) {
+        if (Input.GetKeyUp(KeyCode.Space) || webManager.GetSilkRemaining() <= 0f) {
             webManager.EndSilk();
 
             state = IsSupported() ? SpiderState.Supported : SpiderState.Falling;

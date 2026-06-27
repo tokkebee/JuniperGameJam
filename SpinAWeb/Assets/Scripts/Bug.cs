@@ -24,21 +24,22 @@ public class Bug : MonoBehaviour
     public bugState currentBugState; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         webcolor = Color.white;
         moveDir = Vector2.down;
         currentBugState = bugState.free;
+
         webbing = LayerMask.GetMask("Silk");
         wm = GameObject.Find("Web Manager").GetComponent<WebManager>();
+        bs = GameObject.Find("BugSpawner").GetComponent<BugSpawn>();
     }
 
-    void Awake()
+    void Start()
     {
-        StartCoroutine(Lifespan());
-        bs = GameObject.Find("BugManager").GetComponent<BugSpawn>();
         activationTime = Time.time; 
+        StartCoroutine(Lifespan());
     }
 
     // Update is called once per frame
