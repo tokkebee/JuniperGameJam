@@ -49,12 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3b5ab1a559b8f4989308ac39384ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  camera: {fileID: 0}
+  mainCamera: {fileID: 0}
   screenBounds: {x: 0, y: 0}
   speed: 6
   fallSpeed: 10
-  moveDirection: {x: 0, y: 0, z: 0}
   webManager: {fileID: 0}
+  levelManager: {fileID: 0}
+  gameManager: {fileID: 0}
   state: 2
   supportCheck: {fileID: 7546497525333719894}
   supportRadius: 0.1
@@ -64,6 +65,9 @@ MonoBehaviour:
   silk:
     serializedVersion: 2
     m_Bits: 128
+  leaves:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &2867172029794543445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0048620a6d32d694b8e40b1618b19d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAt
+  mainCamera: {fileID: 0}
 --- !u!58 &5684322502585194940
 CircleCollider2D:
   m_ObjectHideFlags: 0
