@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5210b9f3e0f4f704b8399e968644619a
+guid: 531e1bc1a45975743944bedbed76633a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7503470721826582739
-    second: Pause_Menu_Background_0
+      213: 4773761745046536585
+    second: ICON_antBrown_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pause_Menu_Background_0
+      name: ICON_antBrown_0
       rect:
         serializedVersion: 2
-        x: 188
-        y: 39
-        width: 3533
-        height: 2028
+        x: 984
+        y: 54
+        width: 1872
+        height: 2091
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 657, y: 253, z: 489, w: 261}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d2f8bf232215ed790800000000000000
-      internalID: -7503470721826582739
+      spriteID: 98109dfb30fcf3240800000000000000
+      internalID: 4773761745046536585
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 46b80f83022cca446b729bedf509f40e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pause_Menu_Background_0: -7503470721826582739
+      ICON_antBrown_0: 4773761745046536585
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

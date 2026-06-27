@@ -10,6 +10,7 @@ public class Bug : MonoBehaviour
     public BugSpawn bs; 
     LayerMask webbing;
     public WebManager wm;
+    public LevelManager levelManager;
     public float activationTime;
     public GameObject bugRig;
 
@@ -34,11 +35,12 @@ public class Bug : MonoBehaviour
         webbing = LayerMask.GetMask("Silk");
         wm = GameObject.Find("Web Manager").GetComponent<WebManager>();
         bs = GameObject.Find("BugSpawner").GetComponent<BugSpawn>();
+        levelManager = GameObject.Find("Level Manager").GetComponent<LevelManager>();
     }
 
     void Start()
     {
-        activationTime = Time.time; 
+        activationTime = Time.time;
         StartCoroutine(Lifespan());
     }
 
@@ -75,7 +77,8 @@ public class Bug : MonoBehaviour
     {
         currentBugState = bugState.caught;
         moveSpeed = 0.0f;
-        wm.caughtBugs++; 
+        //wm.caughtBugs++;
+        levelManager.AddScore(bugSO.pointsValue);
     }
 
     void ChooseDirection()
